@@ -1,0 +1,35 @@
+<style>
+    .galeria-projetos {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+    }
+    .projeto-card {
+        background: #222;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: 0.3s;
+        border: 1px solid rgba(255,255,255,0.05);
+    }
+    .projeto-card:hover { transform: scale(1.02); border-color: white; }
+    .projeto-img { width: 100%; height: 150px; background: #333; } /* Espaço para foto */
+    .projeto-info { padding: 15px; }
+    .projeto-info h3 { font-size: 1rem; margin-bottom: 5px; }
+    .projeto-info p { font-size: 0.7rem; opacity: 0.6; }
+</style>
+
+<div class="header-secao">
+    <h1>PROJECTS</h1>
+    <p>Alguns dos trabalhos desenvolvidos pela NOAP.hub</p>
+</div>
+
+<div class="galeria-projetos">
+    <div class="projeto-card">
+        <div class="projeto-img"></div>
+        <div class="projeto-info">
+            <h3>Nome do Projeto 01</h3>
+            <p>Design de Interface / 3D Animation</p>
+        </div>
+    </div>
+    </div>

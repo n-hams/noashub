@@ -1,0 +1,112 @@
+<div class="about-page">
+
+    <div class="about-hero">
+        <img src="images/logo-noap.svg" alt="NOAP.hub" class="about-logo">
+        <p class="about-tagline">APEX CONCEPTS</p>
+    </div>
+
+    <div class="about-grid">
+        <div class="about-bloco">
+            <h3 class="about-bloco-titulo">QUEM SOMOS</h3>
+            <p class="about-bloco-texto">
+                A NOAP.hub é um estúdio criativo focado em identidade visual, design de produto e desenvolvimento web.
+                Unimos estética e tecnologia para criar experiências digitais com personalidade.
+            </p>
+        </div>
+
+        <div class="about-bloco">
+            <h3 class="about-bloco-titulo">O QUE FAZEMOS</h3>
+            <p class="about-bloco-texto">
+                Branding, UI/UX, motion design e desenvolvimento front-end.
+                Do conceito ao pixel final, cada projeto é construído com atenção aos detalhes.
+            </p>
+        </div>
+
+        <div class="about-bloco">
+            <h3 class="about-bloco-titulo">CONTATO</h3>
+            <p class="about-bloco-texto">
+                noashub@gmail.com<br>
+                <a href="https://www.instagram.com/hubnoas/" target="_blank" class="about-link">Instagram</a> ·
+                <a href="https://www.behance.net/Hugoal92" target="_blank" class="about-link">Behance</a> ·
+                <a href="https://www.linkedin.com/in/hugo-alexandre-maas-663984134/" target="_blank" class="about-link">LinkedIn</a>
+            </p>
+        </div>
+    </div>
+
+    <p class="about-rodape">NOAP.hub © 2026</p>
+</div>
+
+<style>
+.about-page {
+    color: white;
+    font-family: sans-serif;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.about-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 40px 0 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.about-logo { height: 3rem; width: auto; opacity: 0.9; }
+.about-tagline {
+    color: rgba(255,255,255,0.4);
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+}
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+}
+.about-bloco {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 16px;
+    padding: 28px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.about-bloco-titulo {
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.5);
+}
+.about-bloco-texto {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.75);
+}
+.about-link {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: 0.3s;
+}
+.about-link:hover { color: white; }
+@media (max-width: 768px) {
+    .about-page { gap: 10px; padding: 0; }
+    .about-hero { flex-direction: row; align-items: center; padding: 0 0 10px; gap: 12px; }
+    .about-logo { height: 1.5rem; }
+    .about-tagline { font-size: 0.6rem; letter-spacing: 0.18em; }
+    .about-grid { gap: 8px; }
+    .about-bloco { padding: 10px 12px; gap: 5px; }
+    .about-bloco-titulo { font-size: 0.6rem; letter-spacing: 0.15em; }
+    .about-bloco-texto { font-size: 0.68rem; line-height: 1.35; }
+    .about-rodape { font-size: 0.55rem; padding-bottom: 2px; }
+}
+.about-rodape {
+    text-align: center;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.15em;
+    padding-bottom: 10px;
+}
+</style>

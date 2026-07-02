@@ -1,0 +1,521 @@
+/* --- 1. RESET E ESTRUTURA --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; } /* Permite scroll suave nativo */
+body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x: hidden; }
+
+/* --- 2. CABEÇALHO --- */
+.logo-link { position: fixed; top: 40px; left: max(40px, calc(50% - 480px)); z-index: 10000; text-decoration: none; cursor: pointer; }
+.logo-noap { height: 2.5rem; width: auto; display: block; overflow: visible; }
+.titulo-sobre { color: white; font-size: 2.5rem; display: flex; font-weight: bold; }
+.resto-nome { transition: 0.5s; display: inline-block; opacity: 1; }
+.resto-nome.escondido { opacity: 0 !important; transform: translateX(-20px); width: 0; pointer-events: none; }
+
+.barra-botoes {
+    display: flex; align-items: center; position: fixed; top: 40px; right: max(40px, calc(50% - 480px)); z-index: 500;
+    background: rgba(15, 25, 25, 0.6); backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.4); padding: 8px 25px; border-radius: 100px;
+    gap: 15px; transition: opacity 0.3s ease;
+}
+.botao { color: white; cursor: pointer; font-size: 0.8rem; font-weight: bold; padding: 8px 15px; border-radius: 50px; transition: 0.3s; white-space: nowrap; }
+.botao:hover { background: rgba(255, 255, 255, 0.1); outline: 1px solid rgba(255, 255, 255, 0.5); }
+
+/* --- 3. FONE E TÍTULO --- */
+.sessao-animacao { height: 300vh; background: #000; position: relative; }
+.sticky-container { position: sticky; top: 0; width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+#animacao-scroll { max-width: 100vw; max-height: 85vh; width: auto; height: auto; display: block; object-fit: contain; }
+
+/* Título do fone */
+.fone-titulo {
+    position: absolute;
+    bottom: 52px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    opacity: 0;
+}
+.fone-titulo.visivel {
+    animation: tituloEntrar 1.2s ease forwards;
+}
+.fone-linha-principal {
+    font-size: 2rem;
+    letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.3) !important;
+    white-space: nowrap;
+}
+.fone-subtitulo {
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.18);
+    font-weight: 300;
+    margin-top: 6px;
+    text-transform: uppercase;
+    display: block;
+    width: 100%;
+    text-align: justify;
+    text-align-last: justify;
+    white-space: normal;
+}
+@keyframes tituloEntrar {
+    from { opacity: 0; transform: translateX(-50%) translateY(16px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+.fone-bold  { font-weight: 700; }
+.fone-light { font-weight: 200; }
+
+/* G522 gradient overlay */
+.fone-g522-wrap { position: relative; display: inline-block; font-weight: 700; }
+.fone-g522-gray  { color: rgba(255,255,255,0.3); }
+.fone-g522-color {
+    position: absolute;
+    left: 0; top: 0;
+    background: linear-gradient(135deg, #ffb6c1 0%, #add8e6 50%, #ffb6c1 100%);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0;
+    animation: g522Appear 5s ease-in-out infinite 3s,
+               g522Flow   3s ease-in-out infinite;
+}
+@keyframes g522Appear {
+    0%, 10%   { opacity: 0; }
+    25%, 75%  { opacity: 1; }
+    90%, 100% { opacity: 0; }
+}
+@keyframes g522Flow {
+    0%   { background-position: 0%   50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0%   50%; }
+}
+
+/* --- 4. JANELAS (OVERLAY) --- */
+#content-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(20px);
+    z-index: 9999; display: none; justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+/* mobile overlay — regras base */
+/* Overlay sem caixa própria — a janela-flutuante já é o container */
+.overlay-content {
+    background: transparent;
+    padding: 0; border: none; border-radius: 0;
+    width: auto; max-width: none; max-height: none;
+    position: relative; overflow: visible;
+    display: flex; justify-content: center; align-items: center;
+}
+#close-overlay { display: none; } /* X agora fica dentro da janela */
+
+/* X dentro da janela-flutuante */
+.janela-close {
+    position: absolute; top: 14px; right: 18px;
+    background: none; border: none;
+    color: white; font-size: 1.2rem; font-weight: 300;
+    cursor: pointer; opacity: 0.6; line-height: 1;
+    transition: transform 0.4s ease, opacity 0.3s;
+}
+.janela-close:hover { transform: rotate(90deg); opacity: 1; }
+.janela-flutuante { position: relative; }
+
+/* --- 5. RESPONSIVIDADE (VS CODE / MOBILE) --- */
+@media (max-width: 900px) {
+    .logo-link { top: 20px; left: 20px !important; }
+    .titulo-sobre { font-size: 1.5rem; }
+    .barra-botoes {
+        top: 70px; left: 10px !important; right: 10px !important;
+        padding: 5px 10px; gap: 5px; justify-content: space-around;
+    }
+    .botao { font-size: 0.6rem; padding: 5px 8px; }
+}
+
+/* --- RODAPÉ --- */
+.rodape-final {
+    width: 100%;
+    background: #000;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 50px 60px 30px;
+    display: grid;
+    grid-template-columns: 1fr auto auto 1fr;
+    align-items: start;
+    gap: 60px;
+    box-sizing: border-box;
+}
+.rodape-logo { display: flex; align-items: flex-start; }
+.rodape-svg { height: 1.6rem; width: auto; opacity: 0.12; }
+.rodape-nav, .rodape-redes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+.rodape-redes a { text-decoration: none; }
+.rodape-btn {
+    color: rgba(255,255,255,0.35);
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.rodape-btn:hover { color: white; }
+.copyright {
+    color: rgba(255,255,255,0.2);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-align: right;
+    align-self: flex-end;
+}
+@media (max-width: 900px) {
+    .rodape-final {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+        padding: 40px 20px 24px;
+        gap: 24px;
+    }
+    .copyright { text-align: center; }
+    .rodape-redes a { text-decoration: none; }
+}
+
+/* Restante do CSS (Banner, Redes, etc) mantenha o mesmo */
+.container { width: 100vw; height: 100vh; position: relative; overflow: hidden; }
+.banner { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: 1s; }
+.banner.ativa { opacity: 1; }
+.redes-sociais { position: absolute; bottom: 40px; left: 40px; display: flex; flex-direction: column; gap: 15px; z-index: 20; }
+.redes-sociais a { color: white; text-decoration: none; font-size: 0.7rem; opacity: 0.5; transition: 0.3s; }
+
+
+/* INDICADORES DO BANNER */
+.banner-dots {
+    position: absolute;
+    bottom: calc(5% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    z-index: 100;
+}
+.banner-dot {
+    width: 32px;
+    height: 3px;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.25);
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+.banner-dot-fill {
+    position: absolute;
+    left: 0; top: 0;
+    height: 100%;
+    width: 0%;
+    background: white;
+    border-radius: 2px;
+}
+.banner-dot.ativo .banner-dot-fill {
+    animation: dotProgress var(--dur, 10s) linear forwards;
+}
+.banner-dot.completo .banner-dot-fill { width: 100%; }
+@keyframes dotProgress { from { width: 0% } to { width: 100% } }
+
+/* ESTRUTURA DO BANNER COMPOSTO */
+.banner-composto {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;     /* Centraliza verticalmente */
+    overflow: hidden;
+}
+
+/* CAMADA 1: O FUNDO PNG */
+.fundo-camada {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
+    z-index: 1;
+}
+
+/* CAMADA 2: O CONTEÚDO QUE "FLUTUA" (LOGO/TEXTOS) */
+.conteudo-superior {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+/* A LOGO QUE ENCOLHE NO CELULAR */
+.logo-banner {
+    width: 60%;         /* No PC ela ocupa 60% da largura */
+    max-width: 800px;   /* Não deixa ficar gigante em monitores 4K */
+    height: auto;       /* Mantém a proporção */
+    transition: width 0.4s ease;
+}
+
+/* RESPONSIVIDADE PARA TELAS PEQUENAS (CELULAR/VS CODE) */
+@media (max-width: 768px) {
+    .logo-banner { width: 85%; }
+    .conteudo-superior { padding-top: 60px; }
+}
+
+/* BANNER 06 — camiseta direita + logo centro-baixo */
+.b06-camiseta {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 100%;
+    width: auto;
+    max-width: none;
+    z-index: 2;
+}
+.b06-logo {
+    position: absolute;
+    bottom: calc(5% + 60px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(150px, 12.94vw, 230px);
+    height: auto !important;
+    display: block;
+    object-fit: contain;
+    z-index: 3;
+}
+@media (max-width: 900px) {
+    .b06-camiseta { right: 50%; transform: translate(50%, -50%); }
+}
+
+/* --- JANELAS FLUTUANTES (Login / Contact) --- */
+.janela-flutuante {
+    background: rgba(15, 25, 25, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    padding: 40px 50px;
+    width: 100%;
+    max-width: 460px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.janela-titulo { color: white; font-size: 0.85rem; font-weight: bold; letter-spacing: 0.2em; text-align: center; }
+.janela-form { display: flex; flex-direction: column; gap: 16px; }
+.campo-grupo { display: flex; flex-direction: column; gap: 6px; }
+.campo-label { color: rgba(255,255,255,0.5); font-size: 0.7rem; letter-spacing: 0.1em; }
+.campo-input {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50px;
+    padding: 12px 20px;
+    color: white;
+    font-size: 0.85rem;
+    font-family: sans-serif;
+    outline: none;
+    transition: border 0.3s;
+}
+.campo-input::placeholder { color: rgba(255,255,255,0.25); }
+.campo-input:focus { border-color: rgba(255,255,255,0.5); }
+.campo-textarea { border-radius: 16px; resize: none; height: 100px; }
+.janela-btn {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 50px;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 0.15em;
+    padding: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.janela-btn:hover { background: rgba(255,255,255,0.2); }
+.janela-link { color: rgba(255,255,255,0.35); font-size: 0.7rem; text-align: center; text-decoration: none; transition: 0.3s; }
+.janela-link:hover { color: rgba(255,255,255,0.7); }
+.janela-flutuante.janela-contact {
+    width: calc(100vw - 920px);
+    max-width: calc(100vw - 920px);
+    min-width: 320px;
+}
+.janela-flutuante.janela-contact .campo-textarea { height: 180px; }
+@media (max-width: 1100px) {
+    .janela-flutuante.janela-contact { width: calc(100vw - 80px); max-width: calc(100vw - 80px); }
+}
+.janela-feedback { color: rgba(255,255,255,0.5); font-size: 0.75rem; text-align: center; min-height: 1em; }
+
+/* About Us — janela com scroll no mobile */
+.janela-about {
+    width: min(700px, calc(100vw - 40px));
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 40px 40px 30px;
+}
+
+/* Banner 01 — margem direita responsiva */
+.banner { object-position: right center; }
+
+/* Banner 04 — logo igual ao 06 */
+.b04-logo {
+    position: absolute;
+    bottom: calc(5% + 60px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(150px, 12.94vw, 230px);
+    height: auto !important;
+    display: block;
+    object-fit: contain;
+    z-index: 3;
+}
+
+/* --- ABOUT US --- */
+.about-page { color: white; font-family: sans-serif; padding: 20px 0; display: flex; flex-direction: column; gap: 50px; }
+.about-hero { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding: 40px 0 20px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.about-logo { height: 3rem; width: auto; opacity: 0.9; }
+.about-tagline { color: rgba(255,255,255,0.4); font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; text-align: left; }
+.about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; }
+.about-bloco { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 28px 30px; display: flex; flex-direction: column; gap: 14px; }
+.about-bloco-titulo { font-size: 0.7rem; font-weight: bold; letter-spacing: 0.2em; color: rgba(255,255,255,0.5); }
+.about-bloco-texto { font-size: 0.88rem; line-height: 1.7; color: rgba(255,255,255,0.75); }
+.about-link { color: rgba(255,255,255,0.5); text-decoration: none; transition: 0.3s; }
+.about-link:hover { color: white; }
+.about-rodape { text-align: center; font-size: 0.65rem; color: rgba(255,255,255,0.2); letter-spacing: 0.15em; padding-bottom: 10px; }
+
+/* Mobile — about */
+@media (max-width: 768px) {
+    #content-overlay { align-items: center; padding: 0; overflow-y: auto; }
+    .janela-about { padding: 36px 14px 6px; max-height: calc(100dvh - 30px); overflow-y: auto; }
+    .about-page { gap: 20px; padding: 0; }
+    .about-hero { flex-direction: column; align-items: flex-start; padding: 0 0 6px; gap: 2px; }
+    .about-logo { height: 1.8rem; }
+    .about-tagline { padding-left: 0; }
+    .about-grid { gap: 20px; grid-template-columns: 1fr; }
+    .about-bloco { padding: 10px 12px; gap: 4px; }
+    .about-bloco-titulo { font-size: 0.62rem; }
+    .about-bloco-texto { font-size: 0.72rem; line-height: 1.4; }
+    .about-rodape { padding-bottom: 2px; font-size: 0.6rem; }
+}
+
+/* --- GRADE DE PROJETOS --- */
+.projetos-grid {
+    background: #000;
+    padding: 60px 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+}
+.projeto-card {
+    width: 20%;          /* 5 por linha em desktop */
+    aspect-ratio: 1 / 1;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background: #111;
+}
+.projeto-gif {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+.projeto-card:hover .projeto-gif { transform: scale(1.05); }
+.projeto-hover {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.projeto-card:hover .projeto-hover { opacity: 1; }
+.projeto-hover span {
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    border: 1px solid rgba(255,255,255,0.5);
+    padding: 8px 18px;
+    border-radius: 50px;
+}
+
+/* --- MODAL VIMEO --- */
+#video-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(20px);
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.video-modal {
+    background: #0a0a0a;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    width: 92%;
+    max-width: 1200px;
+    max-height: 92vh;
+    overflow-y: auto;
+    position: relative;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+#close-video {
+    position: absolute; top: 16px; right: 20px;
+    background: none; border: none;
+    color: white; font-size: 1.2rem; font-weight: 300;
+    cursor: pointer; opacity: 0.6; transition: transform 0.4s ease, opacity 0.3s;
+}
+#close-video:hover { transform: rotate(90deg); opacity: 1; }
+.video-meta { display: flex; flex-direction: column; gap: 10px; }
+.video-titulo { color: white; font-size: 1rem; font-weight: bold; letter-spacing: 0.1em; }
+.video-desc { color: rgba(255,255,255,0.5); font-size: 0.85rem; line-height: 1.7; max-width: 700px; }
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 */
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+}
+.video-wrapper iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+}
+
+/* SETA DOS CARDS DE PROJETO */
+.seta-giphy {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    width: 28px;
+    height: auto;
+    z-index: 5;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+.projeto-card:hover .seta-giphy { opacity: 0; }
+
+/* --- RESPONSIVIDADE PROJETOS --- */
+@media (max-width: 900px) {
+    .projetos-grid { padding: 0; }
+    .projeto-card { width: 100%; aspect-ratio: 1 / 1; }
+}
+@media (min-width: 901px) and (max-width: 1200px) {
+    .projeto-card { width: 33.333%; }
+}

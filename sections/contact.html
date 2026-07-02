@@ -1,0 +1,101 @@
+<div class="janela-flutuante">
+    <h2 class="janela-titulo">CONTACT</h2>
+    <form class="janela-form" id="form-contato">
+        <div class="campo-grupo">
+            <label class="campo-label">Seu nome</label>
+            <input type="text" class="campo-input" id="contact-nome" placeholder="Nome completo" required>
+        </div>
+        <div class="campo-grupo">
+            <label class="campo-label">Seu e-mail</label>
+            <input type="email" class="campo-input" id="contact-email" placeholder="seu@email.com" required>
+        </div>
+        <div class="campo-grupo">
+            <label class="campo-label">Mensagem</label>
+            <textarea class="campo-input campo-textarea" id="contact-msg" placeholder="Como posso te ajudar?" required></textarea>
+        </div>
+        <button type="submit" class="janela-btn" id="contact-submit">ENVIAR</button>
+        <p class="janela-feedback" id="contact-feedback"></p>
+    </form>
+</div>
+
+<style>
+.janela-flutuante {
+    background: rgba(15, 25, 25, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    padding: 40px 50px;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.janela-titulo {
+    color: white;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    text-align: center;
+}
+.janela-form { display: flex; flex-direction: column; gap: 16px; }
+.campo-grupo { display: flex; flex-direction: column; gap: 6px; }
+.campo-label { color: rgba(255,255,255,0.5); font-size: 0.7rem; letter-spacing: 0.1em; }
+.campo-input {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 16px;
+    padding: 12px 20px;
+    color: white;
+    font-size: 0.85rem;
+    font-family: sans-serif;
+    outline: none;
+    transition: border 0.3s;
+}
+.campo-input::placeholder { color: rgba(255,255,255,0.25); }
+.campo-input:focus { border-color: rgba(255,255,255,0.5); }
+.campo-textarea { border-radius: 16px; resize: none; height: 100px; }
+.janela-btn {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 50px;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 0.15em;
+    padding: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.janela-btn:hover { background: rgba(255,255,255,0.2); }
+.janela-feedback {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.75rem;
+    text-align: center;
+    min-height: 1em;
+}
+</style>
+
+<script>
+document.getElementById('form-contato').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const nome  = document.getElementById('contact-nome').value;
+    const email = document.getElementById('contact-email').value;
+    const msg   = document.getElementById('contact-msg').value;
+    const btn   = document.getElementById('contact-submit');
+    const feed  = document.getElementById('contact-feedback');
+
+    btn.disabled = true;
+    btn.textContent = 'ENVIANDO...';
+
+    // Envia via mailto como fallback (substitua pela sua API quando tiver)
+    const assunto = encodeURIComponent('Contato via NOAP.hub — ' + nome);
+    const corpo   = encodeURIComponent('Nome: ' + nome + '\nEmail: ' + email + '\n\n' + msg);
+    window.open('mailto:noashub@gmail.com?subject=' + assunto + '&body=' + corpo);
+
+    feed.textContent = 'Abrindo seu cliente de e-mail...';
+    btn.textContent = 'ENVIAR';
+    btn.disabled = false;
+});
+</script>

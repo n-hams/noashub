@@ -119,6 +119,11 @@
             <div class="botao" id="btn-contact">CONTACT</div>
             <div class="botao" id="btn-about">ABOUT US</div>
             <div class="botao" id="btn-login">LOGIN</div>
+            <div class="lang-toggle">
+                <span class="lang-btn" data-lang="pt">PT</span>
+                <span class="lang-sep">|</span>
+                <span class="lang-btn" data-lang="en">EN</span>
+            </div>
         </div>
 
     </div>
@@ -130,7 +135,7 @@
                 <div class="fone-linha-principal">
                     <span class="fone-bold">Headphone </span><span class="fone-g522-wrap"><span class="fone-g522-gray">G522</span><span class="fone-g522-color">G522</span></span><span class="fone-light"> Logitech</span>
                 </div>
-                <div class="fone-subtitulo">Projeto vencedor no concurso da Unhide + Logitech.</div>
+                <div class="fone-subtitulo" data-i18n="fone.subtitulo">Projeto vencedor no concurso da Unhide + Logitech.</div>
             </div>
         </div>
     </div>
@@ -140,46 +145,51 @@
         <div class="projeto-card"
              data-vimeo="1179560442"
              data-titulo="Boca Rosa"
-             data-desc="Recriação 3D da campanha na collab da Boca Rosa e Adidas.">
+             data-desc="Recriação 3D da campanha na collab da Boca Rosa e Adidas."
+             data-i18n-desc="project.bocarosa.desc">
             <img src="animations/gp_01_bocarosa.gif" alt="Boca Rosa" class="projeto-gif">
             <img src="images/Seta_giphy_.png" class="seta-giphy" alt="">
-            <div class="projeto-hover"><span>VER PROJETO</span></div>
+            <div class="projeto-hover"><span data-i18n="project.see">VER PROJETO</span></div>
         </div>
 
         <div class="projeto-card"
              data-vimeo="1203563816"
              data-titulo="Cacau Show Bytes"
-             data-desc="Campanha conceitual para portfólio dos Bytes, o snack do torcedor.">
+             data-desc="Campanha conceitual para portfólio dos Bytes, o snack do torcedor."
+             data-i18n-desc="project.cacaushow.desc">
             <img src="animations/gp_02_cacaushow.gif" alt="Cacau Show Bytes" class="projeto-gif">
             <img src="images/Seta_giphy_.png" class="seta-giphy" alt="">
-            <div class="projeto-hover"><span>VER PROJETO</span></div>
+            <div class="projeto-hover"><span data-i18n="project.see">VER PROJETO</span></div>
         </div>
 
         <div class="projeto-card"
              data-vimeo="1189010783"
              data-titulo="Gloss Labial Fran"
-             data-desc="Projetos autorais usando FOOH não são apenas visualmente incríveis; eles são máquinas de retenção.">
+             data-desc="Projetos autorais usando FOOH não são apenas visualmente incríveis; eles são máquinas de retenção."
+             data-i18n-desc="project.fr.desc">
             <img src="animations/gp_03_fr.gif" alt="Gloss Labial Fran" class="projeto-gif">
             <img src="images/Seta_giphy_.png" class="seta-giphy" alt="">
-            <div class="projeto-hover"><span>VER PROJETO</span></div>
+            <div class="projeto-hover"><span data-i18n="project.see">VER PROJETO</span></div>
         </div>
 
         <div class="projeto-card"
              data-vimeo="1203913674"
              data-titulo="Guaraná"
-             data-desc="Projeto autoral FOOH das latas comemorativas do Guaraná.">
+             data-desc="Projeto autoral FOOH das latas comemorativas do Guaraná."
+             data-i18n-desc="project.guarana.desc">
             <img src="animations/gp_04_guarana.gif" alt="Guaraná" class="projeto-gif">
             <img src="images/Seta_giphy_.png" class="seta-giphy" alt="">
-            <div class="projeto-hover"><span>VER PROJETO</span></div>
+            <div class="projeto-hover"><span data-i18n="project.see">VER PROJETO</span></div>
         </div>
 
         <div class="projeto-card"
              data-vimeo="1204407394"
              data-titulo="Super Leve"
-             data-desc="Proposta de display para o produto Ressaliv da Super CIMED e Mansão Maromba.">
+             data-desc="Proposta de display para o produto Ressaliv da Super CIMED e Mansão Maromba."
+             data-i18n-desc="project.mansao.desc">
             <img src="animations/gp_05_mansao.gif" alt="Super Leve" class="projeto-gif">
             <img src="images/Seta_giphy_.png" class="seta-giphy" alt="">
-            <div class="projeto-hover"><span>VER PROJETO</span></div>
+            <div class="projeto-hover"><span data-i18n="project.see">VER PROJETO</span></div>
         </div>
     </section>
 
@@ -245,11 +255,11 @@
                     <input type="email" class="campo-input" placeholder="seu@email.com">
                 </div>
                 <div class="campo-grupo">
-                    <label class="campo-label">Senha</label>
+                    <label class="campo-label" data-i18n="login.password.label">Senha</label>
                     <input type="password" class="campo-input" placeholder="••••••••">
                 </div>
-                <button type="submit" class="janela-btn">ENTRAR</button>
-                <a href="#" class="janela-link">Esqueceu a senha?</a>
+                <button type="submit" class="janela-btn" data-i18n="login.submit">ENTRAR</button>
+                <a href="#" class="janela-link" data-i18n="login.forgot">Esqueceu a senha?</a>
             </form>
         </div>
     </div>
@@ -260,18 +270,18 @@
             <h2 class="janela-titulo">CONTACT</h2>
             <form class="janela-form" id="form-contato">
                 <div class="campo-grupo">
-                    <label class="campo-label">Seu nome</label>
-                    <input type="text" class="campo-input" id="contact-nome" name="nome" placeholder="Nome completo" required>
+                    <label class="campo-label" data-i18n="contact.name.label">Seu nome</label>
+                    <input type="text" class="campo-input" id="contact-nome" name="nome" placeholder="Nome completo" data-i18n-placeholder="contact.name.placeholder" required>
                 </div>
                 <div class="campo-grupo">
-                    <label class="campo-label">Seu e-mail</label>
+                    <label class="campo-label" data-i18n="contact.email.label">Seu e-mail</label>
                     <input type="email" class="campo-input" id="contact-email" name="email" placeholder="seu@email.com" required>
                 </div>
                 <div class="campo-grupo">
-                    <label class="campo-label">Mensagem</label>
-                    <textarea class="campo-input campo-textarea" id="contact-msg" name="mensagem" placeholder="Como posso te ajudar?" required></textarea>
+                    <label class="campo-label" data-i18n="contact.msg.label">Mensagem</label>
+                    <textarea class="campo-input campo-textarea" id="contact-msg" name="mensagem" placeholder="Como posso te ajudar?" data-i18n-placeholder="contact.msg.placeholder" required></textarea>
                 </div>
-                <button type="submit" class="janela-btn" id="contact-submit">ENVIAR</button>
+                <button type="submit" class="janela-btn" id="contact-submit" data-i18n="contact.submit">ENVIAR</button>
                 <p class="janela-feedback" id="contact-feedback"></p>
             </form>
         </div>
@@ -287,15 +297,15 @@
                 </div>
                 <div class="about-grid">
                     <div class="about-bloco">
-                        <h3 class="about-bloco-titulo">QUEM SOMOS</h3>
-                        <p class="about-bloco-texto">A Noa's é um hub criativo focado em soluções visuais de alto impacto. Unimos estética e tecnologia para criar experiências com personalidade.</p>
+                        <h3 class="about-bloco-titulo" data-i18n="about.who.title">QUEM SOMOS</h3>
+                        <p class="about-bloco-texto" data-i18n="about.who.text">A Noa's é um hub criativo focado em soluções visuais de alto impacto. Unimos estética e tecnologia para criar experiências com personalidade.</p>
                     </div>
                     <div class="about-bloco">
-                        <h3 class="about-bloco-titulo">O QUE FAZEMOS</h3>
-                        <p class="about-bloco-texto">Conceitos visuais que geram valor.</p>
+                        <h3 class="about-bloco-titulo" data-i18n="about.what.title">O QUE FAZEMOS</h3>
+                        <p class="about-bloco-texto" data-i18n="about.what.text">Conceitos visuais que geram valor.</p>
                     </div>
                     <div class="about-bloco">
-                        <h3 class="about-bloco-titulo">CONTATO</h3>
+                        <h3 class="about-bloco-titulo" data-i18n="about.contact.title">CONTATO</h3>
                         <p class="about-bloco-texto">
                             noashub@gmail.com<br>
                             <a href="https://www.instagram.com/hubnoas/" target="_blank" class="about-link">Instagram</a> ·
@@ -309,6 +319,7 @@
         </div>
     </div>
 
+    <script src="js/i18n.js"></script>
     <script src="js/script.js"></script>
     <script src="js/loader.js"></script>
 

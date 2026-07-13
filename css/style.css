@@ -18,6 +18,11 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
 }
 .botao { color: white; cursor: pointer; font-size: 0.8rem; font-weight: bold; padding: 8px 15px; border-radius: 50px; transition: 0.3s; white-space: nowrap; }
 .botao:hover { background: rgba(255, 255, 255, 0.1); outline: 1px solid rgba(255, 255, 255, 0.5); }
+.lang-toggle { display: flex; align-items: center; gap: 5px; padding-left: 10px; border-left: 1px solid rgba(255,255,255,0.2); }
+.lang-sep { color: rgba(255,255,255,0.2); font-size: 0.7rem; }
+.lang-btn { color: rgba(255,255,255,0.3); cursor: pointer; font-size: 0.7rem; font-weight: bold; letter-spacing: 0.08em; transition: color 0.3s; }
+.lang-btn:hover { color: rgba(255,255,255,0.7); }
+.lang-btn.ativo { color: white; }
 
 /* --- 3. FONE E TÍTULO --- */
 .sessao-animacao { height: 300vh; background: #000; position: relative; }

@@ -8,6 +8,7 @@ function abrirOverlay(templateId) {
     const tpl = document.getElementById(templateId);
     dynamicContent.innerHTML = '';
     dynamicContent.innerHTML = tpl.innerHTML;
+    if (window.i18n) window.i18n.apply(dynamicContent);
     overlay.style.display = 'flex';
     document.body.style.overflow = 'hidden';
     if (templateId === 'tpl-about' && logoLink) logoLink.style.display = 'none';
@@ -26,7 +27,7 @@ function abrirOverlay(templateId) {
             const feed = dynamicContent.querySelector('#contact-feedback');
 
             btn.disabled = true;
-            btn.textContent = 'ENVIANDO...';
+            btn.textContent = window.i18n ? window.i18n.t('contact.sending') : 'ENVIANDO...';
 
             fetch('https://formspree.io/f/mrewpzdr', {
                 method: 'POST',
@@ -35,18 +36,18 @@ function abrirOverlay(templateId) {
             })
             .then(res => {
                 if (res.ok) {
-                    feed.textContent = 'Mensagem enviada! Em breve retorno.';
+                    feed.textContent = window.i18n ? window.i18n.t('contact.success') : 'Mensagem enviada! Em breve retorno.';
                     formContato.reset();
                 } else {
-                    feed.textContent = 'Erro ao enviar. Tente novamente.';
+                    feed.textContent = window.i18n ? window.i18n.t('contact.error') : 'Erro ao enviar. Tente novamente.';
                 }
             })
             .catch(() => {
-                feed.textContent = 'Erro de conexão. Tente novamente.';
+                feed.textContent = window.i18n ? window.i18n.t('contact.network') : 'Erro de conexão. Tente novamente.';
             })
             .finally(() => {
                 btn.disabled = false;
-                btn.textContent = 'ENVIAR';
+                btn.textContent = window.i18n ? window.i18n.t('contact.submit') : 'ENVIAR';
             });
         });
     }

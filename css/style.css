@@ -5,6 +5,20 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
 
 /* --- 2. CABEÇALHO --- */
 .logo-link { position: fixed; top: 40px; left: max(40px, calc(50% - 480px)); z-index: 10000; text-decoration: none; cursor: pointer; }
+#relogio {
+    position: fixed;
+    top: 12px;
+    left: 20px;
+    color: rgba(255,255,255,0.28);
+    font-size: 0.58rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    z-index: 10000;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+}
+@media (max-width: 900px) { #relogio { top: 8px; left: 20px; } }
 .logo-noap { height: 2.5rem; width: auto; display: block; overflow: visible; }
 .titulo-sobre { color: white; font-size: 2.5rem; display: flex; font-weight: bold; }
 .resto-nome { transition: 0.5s; display: inline-block; opacity: 1; }
@@ -189,6 +203,23 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
 .banner.ativa { opacity: 1; }
 .redes-sociais { position: absolute; bottom: 40px; left: 40px; display: flex; flex-direction: column; gap: 15px; z-index: 20; }
 .redes-sociais a { color: white; text-decoration: none; font-size: 0.7rem; opacity: 0.5; transition: 0.3s; }
+.apex-vertical {
+    position: absolute;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    color: rgba(255,255,255,0.22);
+    font-size: 0.55rem;
+    font-weight: bold;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    z-index: 50;
+    user-select: none;
+    pointer-events: none;
+}
+@media (max-width: 900px) { .apex-vertical { display: none; } }
 
 
 /* INDICADORES DO BANNER */

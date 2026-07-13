@@ -132,6 +132,39 @@ if (foneTitulo) {
     observer.observe(foneTitulo);
 }
 
+// --- RELÓGIO ---
+(function () {
+    const el = document.getElementById('relogio');
+    if (!el) return;
+
+    function atualizar() {
+        const agora = new Date();
+        const tz = 'America/Sao_Paulo';
+
+        const partes = new Intl.DateTimeFormat('pt-BR', {
+            weekday: 'long',
+            month:   'long',
+            timeZone: tz
+        }).formatToParts(agora);
+
+        const diaSemana = partes.find(p => p.type === 'weekday').value;
+        const mes       = partes.find(p => p.type === 'month').value;
+
+        const hora = new Intl.DateTimeFormat('pt-BR', {
+            hour:   '2-digit',
+            minute: '2-digit',
+            hour12: false,
+            timeZone: tz
+        }).format(agora);
+
+        const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+        el.textContent = `${cap(diaSemana)}, ${mes}, Brasil - ${hora}`;
+    }
+
+    atualizar();
+    setInterval(atualizar, 1000);
+})();
+
 // --- BOTÕES DO RODAPÉ ---
 const acoes = {
     home:     () => window.scrollTo({ top: 0, behavior: 'smooth' }),

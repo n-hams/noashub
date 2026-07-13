@@ -1,5 +1,10 @@
 const _t = {
   pt: {
+    'nav.home':                 'INÍCIO',
+    'nav.projects':             'PROJETOS',
+    'nav.contact':              'CONTATO',
+    'nav.about':                'SOBRE NÓS',
+    'nav.login':                'ENTRAR',
     'fone.subtitulo':           'Projeto vencedor no concurso da Unhide + Logitech.',
     'project.see':              'VER PROJETO',
     'project.bocarosa.desc':    'Recriação 3D da campanha na collab da Boca Rosa e Adidas.',
@@ -29,6 +34,11 @@ const _t = {
     'meta.description':         "Noa's é um hub criativo que transforma marcas através de 3D, CGI, VFX, FOOH e IA. Criamos conceitos visuais de alto impacto que aumentam engajamento, retenção e vendas para empresas e agências.",
   },
   en: {
+    'nav.home':                 'HOME',
+    'nav.projects':             'PROJECTS',
+    'nav.contact':              'CONTACT',
+    'nav.about':                'ABOUT US',
+    'nav.login':                'LOGIN',
     'fone.subtitulo':           'Award-winning project in the Unhide + Logitech competition.',
     'project.see':              'SEE PROJECT',
     'project.bocarosa.desc':    '3D recreation of the Boca Rosa × Adidas collab campaign.',

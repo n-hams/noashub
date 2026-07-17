@@ -214,7 +214,7 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
     position: absolute;
     right: 28px;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%) rotate(180deg);
     writing-mode: vertical-rl;
     text-orientation: mixed;
     color: rgba(255,255,255,0.275);
@@ -460,7 +460,7 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
 }
 .projetos-carrossel:hover .projetos-track { animation-play-state: paused; }
 @keyframes carrosselDireita {
-    from { transform: translateX(-50%); }
+    from { transform: translateX(-25%); }
     to   { transform: translateX(0%); }
 }
 .projeto-card {
@@ -568,4 +568,72 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
 /* --- RESPONSIVIDADE PROJETOS --- */
 @media (max-width: 900px) {
     .projeto-card { width: 220px; }
+}
+
+/* --- ÍCONE FLUTUANTE DE CONTATO --- */
+.chat-flutuante {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5000;
+}
+.chat-flutuante-icon {
+    position: relative;
+    z-index: 2;
+    width: calc(100% - 6px); /* ~3px de respiro de cada lado antes do glow */
+    height: calc(100% - 6px);
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+    transition: transform 0.3s ease;
+}
+.chat-flutuante:hover .chat-flutuante-icon { transform: scale(1.08); }
+
+.chat-flutuante-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 65px;
+    height: 65px;
+    z-index: 1;
+    pointer-events: none;
+    border-radius: 50%;
+    filter: blur(8px);
+    background:
+        radial-gradient(circle at 28% 30%, rgba(255,255,255,0.55) 0%, transparent 45%),
+        radial-gradient(circle at 72% 34%, rgba(150,210,255,0.55) 0%, transparent 50%),
+        radial-gradient(circle at 55% 74%, rgba(255,255,255,0.4) 0%, transparent 45%),
+        radial-gradient(circle at 22% 66%, rgba(120,190,255,0.45) 0%, transparent 50%);
+    animation: chatGlowGirar 9s linear infinite;
+}
+
+/* Bolinhas pretas com animação de "digitando" (estilo WhatsApp) */
+.chat-dot {
+    fill: #000;
+    fill-opacity: 0.75;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: chatDotDigitando 1.2s ease-in-out infinite;
+}
+.chat-dot-1 { animation-delay: 0s; }
+.chat-dot-2 { animation-delay: 0.2s; }
+.chat-dot-3 { animation-delay: 0.4s; }
+@keyframes chatDotDigitando {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.7; }
+    30% { transform: translateY(-10px); opacity: 1; }
+}
+
+@keyframes chatGlowGirar {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+@media (max-width: 600px) {
+    .chat-flutuante { right: 16px; bottom: 16px; }
 }

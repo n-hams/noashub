@@ -196,10 +196,14 @@
     <script>
         (function () {
             const track = document.getElementById('projetos-track');
-            track.insertAdjacentHTML('beforeend', track.innerHTML);
+            const original = track.innerHTML;
+            // Duplica em 4 cópias (não só 2) para garantir que o trilho
+            // seja sempre mais largo que a tela, evitando um "buraco"
+            // no fim do ciclo da animação em monitores largos.
+            track.insertAdjacentHTML('beforeend', original + original + original);
             const cards = track.querySelectorAll('.projeto-card');
             cards.forEach((card, i) => {
-                if (i >= cards.length / 2) {
+                if (i >= cards.length / 4) {
                     card.setAttribute('aria-hidden', 'true');
                     card.setAttribute('tabindex', '-1');
                 }
@@ -261,6 +265,17 @@
         </nav>
         <p class="copyright">developed by Noa's hub / 2026</p>
     </footer>
+
+    <!-- ÍCONE FLUTUANTE DE CONTATO -->
+    <button id="btn-chat-flutuante" class="chat-flutuante" aria-label="Abrir contato">
+        <span class="chat-flutuante-glow"></span>
+        <svg class="chat-flutuante-icon" viewBox="0 0 416 335" xmlns="http://www.w3.org/2000/svg">
+            <path d="M96 0H320C371.6 0 413 41.4 413 92V178C413 229.6 371.6 271 320 271H293L268 322C263.5 331 250.5 331 246 322L221 271H96C44.4 271 3 229.6 3 178V92C3 41.4 44.4 0 96 0Z" fill="#fff" fill-opacity="0.85"/>
+            <circle class="chat-dot chat-dot-1" cx="128" cy="136" r="22"/>
+            <circle class="chat-dot chat-dot-2" cx="208" cy="136" r="22"/>
+            <circle class="chat-dot chat-dot-3" cx="288" cy="136" r="22"/>
+        </svg>
+    </button>
 
     <!-- OVERLAY -->
     <div id="content-overlay">

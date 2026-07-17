@@ -73,6 +73,9 @@ document.getElementById('btn-contact').addEventListener('click', () => abrirOver
 document.getElementById('btn-about').addEventListener('click',   () => abrirOverlay('tpl-about'));
 document.getElementById('btn-login').addEventListener('click',   () => abrirOverlay('tpl-login'));
 
+const btnChatFlutuante = document.getElementById('btn-chat-flutuante');
+if (btnChatFlutuante) btnChatFlutuante.addEventListener('click', () => abrirOverlay('tpl-contact'));
+
 // --- FECHAR ---
 if (closeBtn) closeBtn.addEventListener('click', fechar);
 overlay.addEventListener('click', (e) => { if (e.target === overlay) fechar(); });

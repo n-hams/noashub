@@ -1,0 +1,106 @@
+/* --- PÁGINA DE PROJETOS --- */
+.projeto-page { background: #000; min-height: 100vh; }
+
+.projeto-logo-link { position: fixed; top: 40px; left: 40px; z-index: 1000; }
+.projeto-logo-img { height: 2rem; display: block; }
+
+.projeto-voltar {
+    position: fixed; top: 46px; right: 40px; z-index: 1000;
+    color: rgba(255,255,255,0.6); text-decoration: none;
+    font-size: 0.75rem; font-weight: bold; letter-spacing: 0.08em;
+    transition: color 0.3s;
+}
+.projeto-voltar:hover { color: #fff; }
+
+/* --- MENU LATERAL ANIMADO --- */
+.projeto-sidebar {
+    position: fixed; left: 24px; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; align-items: center;
+    gap: 16px; padding: 18px 12px; border-radius: 22px;
+    background: rgba(0,0,0,0.35); backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.08);
+    z-index: 900;
+}
+.projeto-thumb-wrap { position: relative; display: flex; align-items: center; text-decoration: none; }
+.projeto-thumb {
+    width: 40px; height: 40px; object-fit: cover; border-radius: 8px;
+    opacity: 0.35; cursor: pointer; display: block;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.projeto-thumb-wrap:hover .projeto-thumb { opacity: 0.75; transform: scale(1.08); }
+.projeto-thumb-wrap.ativo .projeto-thumb { opacity: 1; box-shadow: 0 0 0 1px rgba(255,255,255,0.5); }
+
+.projeto-thumb-label {
+    position: absolute; left: 52px; top: 50%;
+    transform: translateY(-50%) translateX(-10px);
+    background: #111; color: #fff; padding: 7px 16px; border-radius: 6px;
+    font-size: 0.68rem; font-weight: bold; letter-spacing: 0.08em; white-space: nowrap;
+    opacity: 0; pointer-events: none;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.projeto-thumb-wrap:hover .projeto-thumb-label { opacity: 1; transform: translateY(-50%) translateX(0); }
+
+/* --- CONTEÚDO --- */
+@keyframes projetoFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.projeto-main {
+    margin-left: 150px; min-height: 100vh;
+    display: flex; align-items: center; padding: 120px 60px 80px;
+    animation: projetoFadeIn 0.5s ease both;
+}
+.projeto-conteudo { max-width: 1100px; width: 100%; margin: 0 auto; }
+.projeto-titulo { color: #fff; font-size: 2rem; font-weight: bold; letter-spacing: 0.02em; margin-bottom: 14px; text-align: center; }
+.projeto-desc { color: rgba(255,255,255,0.55); font-size: 0.9rem; line-height: 1.7; max-width: 640px; margin: 0 auto 36px; text-align: center; }
+
+/* Vídeo: sempre primeiro, centralizado */
+.projeto-video-wrap {
+    position: relative; width: 100%; max-width: 1000px; margin: 0 auto 32px;
+    padding-top: 56.25%; border-radius: 16px; overflow: hidden; background: #000;
+}
+.projeto-video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* Imagens: únicas centralizadas, em sequência ficam lado a lado */
+.projeto-imagens { display: flex; justify-content: center; align-items: flex-start; gap: 24px; flex-wrap: wrap; margin-bottom: 24px; }
+.projeto-imagens:last-child { margin-bottom: 0; }
+.projeto-img { flex: 1 1 300px; max-width: 1000px; width: 100%; border-radius: 16px; display: block; }
+
+/* Grupo de imagens lado a lado (mesma sequência) */
+.projeto-imagens.lado-a-lado .projeto-img { flex: 1 1 260px; max-width: calc(33.333% - 16px); }
+@media (max-width: 780px) {
+    .projeto-imagens.lado-a-lado .projeto-img { max-width: 100%; }
+}
+
+.projeto-nota {
+    text-align: center; color: rgba(255,255,255,0.4);
+    font-size: 0.7rem; letter-spacing: 0.1em; margin-top: 20px;
+}
+
+/* --- TEMA FRAN (fundo rosa com padrão) --- */
+body.tema-fran {
+    background-color: #F0AFC0;
+    background-image: url("../images/Projeto_Fran_Pattern01-11.png");
+    background-repeat: repeat;
+    background-size: 104px 107px;
+}
+body.tema-fran .projeto-titulo { color: #3a1420; }
+body.tema-fran .projeto-desc { color: rgba(58,20,32,0.65); }
+body.tema-fran .projeto-nota { color: rgba(58,20,32,0.45); }
+body.tema-fran .projeto-voltar { color: rgba(58,20,32,0.6); }
+body.tema-fran .projeto-voltar:hover { color: #3a1420; }
+
+@media (max-width: 780px) {
+    .projeto-sidebar {
+        left: 0; top: 0; transform: none; width: 100%; height: auto;
+        flex-direction: row; justify-content: flex-start; overflow-x: auto;
+        border-radius: 0; padding: 90px 20px 14px; gap: 12px;
+    }
+    .projeto-thumb-label { left: 50%; top: 120%; transform: translate(-50%, 4px); }
+    .projeto-thumb-wrap:hover .projeto-thumb-label { transform: translate(-50%, 0); }
+    .projeto-main { margin-left: 0; padding: 150px 24px 60px; }
+    .projeto-voltar { top: 16px; right: 20px; }
+    .projeto-logo-link { top: 16px; left: 20px; }
+}

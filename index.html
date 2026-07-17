@@ -95,7 +95,9 @@
     <div class="apex-vertical">APEX CONCEPTS</div>
 
     <div class="slideshow">
-        <img src="images/banner_01.jpg" alt="Banner 01" class="banner ativa">
+        <div class="banner-composto banner ativa" id="banner-07">
+            <img src="images/banner_07-02.png" class="fundo-camada" alt="Fundo">
+        </div>
 
         <div class="banner-composto banner" id="banner-04">
             <img src="images/banner_04_fundo.png" class="fundo-camada" alt="Fundo">
@@ -132,6 +134,79 @@
 
     </div>
 
+    <!-- CARROSSEL DE PROJETOS -->
+    <section class="projetos-carrossel">
+        <div class="projetos-track" id="projetos-track">
+            <div class="projeto-card"
+                 data-slug="boca-rosa"
+                 data-vimeo="1179560442"
+                 data-titulo="Boca Rosa"
+                 data-desc="Recriação 3D da campanha na collab da Boca Rosa e Adidas."
+                 data-i18n-desc="project.bocarosa.desc">
+                <img src="animations/gp_01_bocarosa.gif" alt="Boca Rosa" class="projeto-gif">
+                <img src="images/Seta_giphy_.png" class="seta-giphy" alt="">
+                <div class="projeto-hover"><span data-i18n="project.see">VER PROJETO</span></div>
+            </div>
+
+            <div class="projeto-card"
+                 data-slug="cacau-show"
+                 data-vimeo="1203563816"
+                 data-titulo="Cacau Show Bytes"
+                 data-desc="Campanha conceitual para portfólio dos Bytes, o snack do torcedor."
+                 data-i18n-desc="project.cacaushow.desc">
+                <img src="animations/gp_02_cacaushow.gif" alt="Cacau Show Bytes" class="projeto-gif">
+                <img src="images/Seta_giphy_.png" class="seta-giphy" alt="">
+                <div class="projeto-hover"><span data-i18n="project.see">VER PROJETO</span></div>
+            </div>
+
+            <div class="projeto-card"
+                 data-slug="gloss-fran"
+                 data-vimeo="1189010783"
+                 data-titulo="Gloss Labial Fran"
+                 data-desc="Projetos autorais usando FOOH não são apenas visualmente incríveis; eles são máquinas de retenção."
+                 data-i18n-desc="project.fr.desc">
+                <img src="animations/gp_03_fr.gif" alt="Gloss Labial Fran" class="projeto-gif">
+                <img src="images/Seta_giphy_.png" class="seta-giphy" alt="">
+                <div class="projeto-hover"><span data-i18n="project.see">VER PROJETO</span></div>
+            </div>
+
+            <div class="projeto-card"
+                 data-slug="guarana"
+                 data-vimeo="1203913674"
+                 data-titulo="Guaraná"
+                 data-desc="Projeto autoral FOOH das latas comemorativas do Guaraná."
+                 data-i18n-desc="project.guarana.desc">
+                <img src="animations/gp_04_guarana.gif" alt="Guaraná" class="projeto-gif">
+                <img src="images/Seta_giphy_.png" class="seta-giphy" alt="">
+                <div class="projeto-hover"><span data-i18n="project.see">VER PROJETO</span></div>
+            </div>
+
+            <div class="projeto-card"
+                 data-slug="super-leve"
+                 data-vimeo="1204407394"
+                 data-titulo="Super Leve"
+                 data-desc="Proposta de display para o produto Ressaliv da Super CIMED e Mansão Maromba."
+                 data-i18n-desc="project.mansao.desc">
+                <img src="animations/gp_05_mansao.gif" alt="Super Leve" class="projeto-gif">
+                <img src="images/Seta_giphy_.png" class="seta-giphy" alt="">
+                <div class="projeto-hover"><span data-i18n="project.see">VER PROJETO</span></div>
+            </div>
+        </div>
+    </section>
+    <script>
+        (function () {
+            const track = document.getElementById('projetos-track');
+            track.insertAdjacentHTML('beforeend', track.innerHTML);
+            const cards = track.querySelectorAll('.projeto-card');
+            cards.forEach((card, i) => {
+                if (i >= cards.length / 2) {
+                    card.setAttribute('aria-hidden', 'true');
+                    card.setAttribute('tabindex', '-1');
+                }
+            });
+        })();
+    </script>
+
     <div class="sessao-animacao" id="projects-section">
         <div class="sticky-container">
             <canvas id="animacao-scroll"></canvas>
@@ -143,59 +218,6 @@
             </div>
         </div>
     </div>
-
-    <!-- GRADE DE PROJETOS -->
-    <section class="projetos-grid">
-        <div class="projeto-card"
-             data-vimeo="1179560442"
-             data-titulo="Boca Rosa"
-             data-desc="Recriação 3D da campanha na collab da Boca Rosa e Adidas."
-             data-i18n-desc="project.bocarosa.desc">
-            <img src="animations/gp_01_bocarosa.gif" alt="Boca Rosa" class="projeto-gif">
-            <img src="images/Seta_giphy_.png" class="seta-giphy" alt="">
-            <div class="projeto-hover"><span data-i18n="project.see">VER PROJETO</span></div>
-        </div>
-
-        <div class="projeto-card"
-             data-vimeo="1203563816"
-             data-titulo="Cacau Show Bytes"
-             data-desc="Campanha conceitual para portfólio dos Bytes, o snack do torcedor."
-             data-i18n-desc="project.cacaushow.desc">
-            <img src="animations/gp_02_cacaushow.gif" alt="Cacau Show Bytes" class="projeto-gif">
-            <img src="images/Seta_giphy_.png" class="seta-giphy" alt="">
-            <div class="projeto-hover"><span data-i18n="project.see">VER PROJETO</span></div>
-        </div>
-
-        <div class="projeto-card"
-             data-vimeo="1189010783"
-             data-titulo="Gloss Labial Fran"
-             data-desc="Projetos autorais usando FOOH não são apenas visualmente incríveis; eles são máquinas de retenção."
-             data-i18n-desc="project.fr.desc">
-            <img src="animations/gp_03_fr.gif" alt="Gloss Labial Fran" class="projeto-gif">
-            <img src="images/Seta_giphy_.png" class="seta-giphy" alt="">
-            <div class="projeto-hover"><span data-i18n="project.see">VER PROJETO</span></div>
-        </div>
-
-        <div class="projeto-card"
-             data-vimeo="1203913674"
-             data-titulo="Guaraná"
-             data-desc="Projeto autoral FOOH das latas comemorativas do Guaraná."
-             data-i18n-desc="project.guarana.desc">
-            <img src="animations/gp_04_guarana.gif" alt="Guaraná" class="projeto-gif">
-            <img src="images/Seta_giphy_.png" class="seta-giphy" alt="">
-            <div class="projeto-hover"><span data-i18n="project.see">VER PROJETO</span></div>
-        </div>
-
-        <div class="projeto-card"
-             data-vimeo="1204407394"
-             data-titulo="Super Leve"
-             data-desc="Proposta de display para o produto Ressaliv da Super CIMED e Mansão Maromba."
-             data-i18n-desc="project.mansao.desc">
-            <img src="animations/gp_05_mansao.gif" alt="Super Leve" class="projeto-gif">
-            <img src="images/Seta_giphy_.png" class="seta-giphy" alt="">
-            <div class="projeto-hover"><span data-i18n="project.see">VER PROJETO</span></div>
-        </div>
-    </section>
 
     <!-- OVERLAY VIMEO -->
     <div id="video-overlay">

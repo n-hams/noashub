@@ -66,7 +66,7 @@ document.getElementById('btn-nav-home').addEventListener('click', () => {
 });
 
 document.getElementById('btn-projects').addEventListener('click', () => {
-    document.getElementById('projects-section').scrollIntoView({ behavior: 'smooth' });
+    window.location.href = 'projetos/boca-rosa.html';
 });
 
 document.getElementById('btn-contact').addEventListener('click', () => abrirOverlay('tpl-contact'));
@@ -109,7 +109,10 @@ function fecharVideo() {
 }
 
 document.querySelectorAll('.projeto-card').forEach(card => {
-    card.addEventListener('click', () => abrirVideo(card));
+    card.addEventListener('click', () => {
+        const slug = card.dataset.slug;
+        if (slug) window.location.href = `projetos/${slug}.html`;
+    });
 });
 
 closeVideo.addEventListener('click', fecharVideo);
@@ -168,7 +171,7 @@ if (foneTitulo) {
 // --- BOTÕES DO RODAPÉ ---
 const acoes = {
     home:     () => window.scrollTo({ top: 0, behavior: 'smooth' }),
-    projects: () => document.getElementById('projects-section').scrollIntoView({ behavior: 'smooth' }),
+    projects: () => { window.location.href = 'projetos/boca-rosa.html'; },
     contact:  () => abrirOverlay('tpl-contact'),
     about:    () => abrirOverlay('tpl-about'),
     login:    () => abrirOverlay('tpl-login'),

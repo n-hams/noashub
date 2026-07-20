@@ -32,11 +32,27 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
 }
 .botao { color: white; cursor: pointer; font-size: 0.8rem; font-weight: bold; padding: 8px 15px; border-radius: 50px; transition: 0.3s; white-space: nowrap; }
 .botao:hover { background: rgba(255, 255, 255, 0.1); outline: 1px solid rgba(255, 255, 255, 0.5); }
-.lang-toggle { display: flex; align-items: center; gap: 5px; padding-left: 10px; border-left: 1px solid rgba(255,255,255,0.2); }
-.lang-sep { color: rgba(255,255,255,0.2); font-size: 0.7rem; }
-.lang-btn { color: rgba(255,255,255,0.3); cursor: pointer; font-size: 0.7rem; font-weight: bold; letter-spacing: 0.08em; transition: color 0.3s; }
-.lang-btn:hover { color: rgba(255,255,255,0.7); }
-.lang-btn.ativo { color: white; }
+
+/* Seletor de idioma — sempre fixo no canto superior direito, em qualquer tela
+   (home, com a barra de botões ou não, e por cima de Contato/Login/Sobre) */
+.site-lang-toggle {
+    position: fixed; top: 16px; right: max(40px, calc(50% - 480px)); z-index: 10002;
+    display: flex; align-items: center; gap: 6px;
+    background: rgba(15, 25, 25, 0.6); backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50px; padding: 5px 12px;
+}
+.site-lang-toggle .lang-sep { color: rgba(255,255,255,0.25); font-size: 0.65rem; }
+.site-lang-toggle .lang-btn {
+    color: rgba(255,255,255,0.45); cursor: pointer;
+    font-size: 0.65rem; font-weight: bold; letter-spacing: 0.08em;
+    transition: color 0.3s;
+}
+.site-lang-toggle .lang-btn:hover { color: rgba(255,255,255,0.8); }
+.site-lang-toggle .lang-btn.ativo { color: #fff; }
+@media (max-width: 900px) {
+    .site-lang-toggle { top: 16px; right: 16px; padding: 4px 10px; }
+}
 
 /* --- 3. FONE E TÍTULO --- */
 .sessao-animacao { height: 300vh; background: #000; position: relative; }
@@ -131,26 +147,6 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
 }
 #close-overlay { display: none; } /* X agora fica dentro da janela */
 
-/* Seletor de idioma — continua acessível mesmo com Contato/Login/Sobre abertos */
-.overlay-lang-toggle {
-    position: fixed; top: 24px; right: max(40px, calc(50% - 480px)); z-index: 10001;
-    display: flex; align-items: center; gap: 6px;
-    background: rgba(15, 25, 25, 0.6); backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 50px; padding: 5px 12px;
-}
-.overlay-lang-toggle .lang-sep { color: rgba(255,255,255,0.25); font-size: 0.65rem; }
-.overlay-lang-toggle .lang-btn {
-    color: rgba(255,255,255,0.45); cursor: pointer;
-    font-size: 0.65rem; font-weight: bold; letter-spacing: 0.08em;
-    transition: color 0.3s;
-}
-.overlay-lang-toggle .lang-btn:hover { color: rgba(255,255,255,0.8); }
-.overlay-lang-toggle .lang-btn.ativo { color: #fff; }
-@media (max-width: 900px) {
-    .overlay-lang-toggle { top: 16px; right: 16px; padding: 4px 10px; }
-}
-
 /* X dentro da janela-flutuante */
 .janela-close {
     position: absolute; top: 14px; right: 18px;
@@ -168,10 +164,10 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
     .titulo-sobre { font-size: 1.5rem; }
     .barra-botoes {
         top: 70px; left: 10px !important; right: 10px !important;
-        padding: 5px 10px; gap: 5px; justify-content: space-around;
-        flex-wrap: wrap; row-gap: 4px;
+        padding: 5px 6px; gap: 2px; justify-content: space-between;
+        flex-wrap: nowrap; /* nunca quebra linha — a fonte encolhe antes */
     }
-    .botao { font-size: 0.6rem; padding: 5px 8px; }
+    .botao { font-size: clamp(0.42rem, 2.3vw, 0.6rem); padding: 5px 4px; }
 }
 
 /* --- RODAPÉ --- */

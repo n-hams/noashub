@@ -101,9 +101,9 @@ window.i18n = {
     this.lang = lang;
     localStorage.setItem('noaslang', lang);
     document.documentElement.lang = lang === 'pt' ? 'pt-br' : 'en';
-    // Só sobrescreve title/description genéricos na home (onde existe o
-    // seletor de idioma) — páginas de projeto têm título/descrição próprios.
-    if (document.querySelector('.lang-toggle')) {
+    // Só sobrescreve title/description genéricos na home — páginas de
+    // projeto têm título/descrição próprios e não devem ser sobrescritas.
+    if (document.body.id === 'inicio') {
         document.title = this.t('meta.title');
         const metaDesc = document.querySelector('meta[name="description"]');
         if (metaDesc) metaDesc.content = this.t('meta.description');

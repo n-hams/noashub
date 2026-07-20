@@ -33,25 +33,33 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
 .botao { color: white; cursor: pointer; font-size: 0.8rem; font-weight: bold; padding: 8px 15px; border-radius: 50px; transition: 0.3s; white-space: nowrap; }
 .botao:hover { background: rgba(255, 255, 255, 0.1); outline: 1px solid rgba(255, 255, 255, 0.5); }
 
-/* Seletor de idioma — sempre fixo no canto superior direito, em qualquer tela
-   (home, com a barra de botões ou não, e por cima de Contato/Login/Sobre) */
-.site-lang-toggle {
+/* Seletor de idioma dentro da barra de botões (home) */
+.lang-toggle { display: flex; align-items: center; gap: 5px; padding-left: 10px; border-left: 1px solid rgba(255,255,255,0.2); flex: 0 0 auto; }
+.lang-sep { color: rgba(255,255,255,0.2); font-size: 0.7rem; }
+.lang-btn { color: rgba(255,255,255,0.3); cursor: pointer; font-size: 0.7rem; font-weight: bold; letter-spacing: 0.08em; transition: color 0.3s; white-space: nowrap; }
+.lang-btn:hover { color: rgba(255,255,255,0.7); }
+.lang-btn.ativo { color: white; }
+
+/* Seletor de idioma no canto — só aparece quando não há barra de botões
+   visível (páginas de projeto usam .projeto-lang-toggle; aqui na home ele
+   cobre as janelas de Contato/Login/Sobre, que escondem a barra) */
+.site-lang-toggle-corner {
     position: fixed; top: 16px; right: max(40px, calc(50% - 480px)); z-index: 10002;
     display: flex; align-items: center; gap: 6px;
     background: rgba(15, 25, 25, 0.6); backdrop-filter: blur(10px);
     border: 1px solid rgba(255,255,255,0.2);
     border-radius: 50px; padding: 5px 12px;
 }
-.site-lang-toggle .lang-sep { color: rgba(255,255,255,0.25); font-size: 0.65rem; }
-.site-lang-toggle .lang-btn {
+.site-lang-toggle-corner .lang-sep { color: rgba(255,255,255,0.25); font-size: 0.65rem; }
+.site-lang-toggle-corner .lang-btn {
     color: rgba(255,255,255,0.45); cursor: pointer;
     font-size: 0.65rem; font-weight: bold; letter-spacing: 0.08em;
     transition: color 0.3s;
 }
-.site-lang-toggle .lang-btn:hover { color: rgba(255,255,255,0.8); }
-.site-lang-toggle .lang-btn.ativo { color: #fff; }
+.site-lang-toggle-corner .lang-btn:hover { color: rgba(255,255,255,0.8); }
+.site-lang-toggle-corner .lang-btn.ativo { color: #fff; }
 @media (max-width: 900px) {
-    .site-lang-toggle { top: 16px; right: 16px; padding: 4px 10px; }
+    .site-lang-toggle-corner { top: 16px; right: 16px; padding: 4px 10px; }
 }
 
 /* --- 3. FONE E TÍTULO --- */
@@ -163,11 +171,14 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
     .logo-link { top: 20px; left: 20px !important; }
     .titulo-sobre { font-size: 1.5rem; }
     .barra-botoes {
-        top: 70px; left: 10px !important; right: 10px !important;
-        padding: 5px 6px; gap: 2px; justify-content: space-between;
+        top: 70px; left: 16px !important; right: 16px !important;
+        padding: 5px 6px; gap: 1px; justify-content: space-between;
         flex-wrap: nowrap; /* nunca quebra linha — a fonte encolhe antes */
     }
-    .botao { font-size: clamp(0.42rem, 2.3vw, 0.6rem); padding: 5px 4px; }
+    .botao { font-size: clamp(0.38rem, 2.1vw, 0.6rem); padding: 5px 3px; }
+    .lang-toggle { gap: 3px; padding-left: 5px; flex-shrink: 0; }
+    .lang-btn { font-size: clamp(0.38rem, 2.1vw, 0.6rem); }
+    .lang-sep { font-size: clamp(0.38rem, 2.1vw, 0.6rem); }
 }
 
 /* --- RODAPÉ --- */

@@ -203,5 +203,5 @@ body.tema-guarana-renner .projeto-voltar:hover { color: #1a1a1a; }
     .projeto-main { margin-left: 0; padding: 150px 24px 60px; }
     .projeto-voltar { top: 54px; right: 20px; }
     .projeto-logo-link { top: 16px; left: 20px; }
-    .projeto-lang-toggle { top: 16px; right: 20px; padding: 4px 10px; }
+    .projeto-lang-toggle { top: 16px; right: 16px; padding: 4px 10px; }
 }

@@ -3,7 +3,8 @@ const PROJETOS = [
     { slug: 'cacau-show', titulo: 'Cacau Show Bytes',   thumb: '../animations/gp_02_cacaushow.gif' },
     { slug: 'gloss-fran', titulo: 'Gloss Labial Fran',  thumb: '../animations/gp_03_fr.gif' },
     { slug: 'guarana',    titulo: 'Guaraná',            thumb: '../animations/gp_04_guarana.gif' },
-    { slug: 'super-leve', titulo: 'Super Leve',         thumb: '../animations/gp_05_mansao.gif' }
+    { slug: 'super-leve', titulo: 'Super Leve',         thumb: '../animations/gp_05_mansao.gif' },
+    { slug: 'guarana-renner', titulo: 'Lojas Renner e Guaraná Antarctica', thumb: '../images/Projeto_Guaranaerenner_01.png' }
 ];
 
 const ativo = document.body.dataset.projeto;

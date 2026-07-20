@@ -21,14 +21,20 @@
     <a href="../index.html" class="projeto-logo-link">
         <img src="../images/logo-noap.svg" alt="Noa's hub" class="projeto-logo-img">
     </a>
-    <a href="../index.html" class="projeto-voltar">&larr; VOLTAR</a>
+    <a href="../index.html" class="projeto-voltar">&larr; <span data-i18n="nav.back">VOLTAR</span></a>
+
+    <div class="projeto-lang-toggle">
+        <span class="lang-btn" data-lang="pt">PT</span>
+        <span class="lang-sep">|</span>
+        <span class="lang-btn" data-lang="en">EN</span>
+    </div>
 
     <aside class="projeto-sidebar" id="projeto-sidebar"></aside>
 
     <main class="projeto-main">
         <div class="projeto-conteudo">
             <h1 class="projeto-titulo">Gloss Labial Fran</h1>
-            <p class="projeto-desc">Projetos autorais usando FOOH não são apenas visualmente incríveis; eles são máquinas de retenção.</p>
+            <p class="projeto-desc" data-i18n="project.fr.desc">Projetos autorais usando FOOH não são apenas visualmente incríveis; eles são máquinas de retenção.</p>
 
             <div class="projeto-video-wrap">
                 <iframe src="https://player.vimeo.com/video/1189010783?color=d76234&title=0&byline=0&portrait=0"
@@ -48,6 +54,131 @@
         </div>
     </main>
 
+    <footer class="rodape-final">
+        <div class="rodape-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1108.69 263.61" class="rodape-svg" aria-label="Noa's hub">
+              <path fill="white" d="M169.7,114.8c-16.42-26.68-47.58-33.56-73.25-16.13-3.28,1.15-5.59-.04-9.44-.76-8.05-.71-14.99.71-23.26,1.02-5.27.59-11.69.14-16.43,2.29-1.56,1.01-1.43,2.52-1.44,4.9.18,23.41-.36,89.8.2,105.01,1.06,3.27,5.27,2.54,9.84,2.81,4.26.08,8.49.2,13.34.28,6.82.1,13.68.07,17.56-.58,3.36-.57,4.52-1.88,4.83-4.91,2.23-19.37-11.27-85.58,23.51-84.59,9.11,1.26,14.18,8.61,16.87,18.16,5.3,18.91,1.6,47.7,2,63.62,0,3.81.26,7.23,4.95,7.73,6.48,1.06,20.82.52,28.82.35,4.85-.13,8.27.12,9.96-1.25,1.82-1.4,1.96-4.8,2.02-7.29-.7-26.68,5.22-68.57-9.98-90.53l-.1-.15Z"/>
+              <path fill="white" d="M319.36,156.64c-.14-4.2-.02-8.42.32-12.61.44-5.77,1.71-10.9.74-15.79-1.51-7.05-5.9-13.17-10.05-18.99-8.17-11.08-19.44-17.19-31.32-19.28-7.55-1.44-15.67-1.69-24.29-1.6-83.89-6.59-87.46,129.98-5.1,128.93,15.31.1,33.72,1.09,46.65-7.66,10.44-6.9,21.49-20.16,24.19-32.5.98-6.79-1.17-13.42-1.14-20.29v-.21ZM278.74,153.4c.01,6.95-2.51,15.33-6.06,20.03-6.03,8.73-16.99,11.34-25.46,5.34-15.34-11.19-15.1-40.97.43-51.89,7.94-5.39,18.19-3.27,24.21,4.32,4.21,4.79,7.15,14.21,6.88,21.93v.26Z"/>
+              <path fill="white" d="M461,133.54c-6.91-25.33-28.3-46.16-55.37-45.11-13.93-.19-28.01-.79-41.01,4.11-46.43,19.25-47.47,97.32-3.14,119.43,12.6,6.18,27.9,6.59,40.68.66,3.61-1.53,8.34-5.24,11.22-5.38,4.08-.42,4.08,5.25,7.9,6.11,8.38,1.79,23.75.63,32.18.68,3.53-.04,6.04-.26,7.42-1.27,2.36-1.81,2.02-5.79,2.09-8.7-.51-20.19,2.14-51.99-1.94-70.38l-.04-.16Z"/>
+              <path fill="white" d="M457.45,71.32c.69-1.16.85-2.97.92-5.29.02-3.29.1-7.71-.07-10.99,0-7.22-5.12-6.1-11.31-6.28-3.3-.02-6.51.02-8.34.62-2.74.93-2.75,2.96-3.01,6.31-.09,3.22-.03,7.66-.04,11-.05,3.39.21,7.15,4.31,7.57,2.28.44,5.77.14,8.56-.08,2.98-.37,6.97-.21,8.92-2.75l.07-.11Z"/>
+              <path fill="white" d="M590.52,182.02c-4.8,33.14-36.82,35.9-62.78,35.23-21.46,1.35-39.2-5.84-51.85-23.7-2.2-3.19-5.97-9.25-.12-10.54,9.79-1.51,19.33-1.41,29.32-2.32,6.58-.34,13.49-1.44,19.9.06,3.15.66,6.81,1.61,9.88.41,4.22-1.47,5.42-6.4,2.15-9.52-2.96-3.04-8.42-5.18-13.91-7.45-8.21-3.46-16.84-7-24.68-11.53-15.46-9.8-21.74-21.65-19.15-33.49,3.03-13.05,12.93-23.09,24.85-26.94,11.52-4.18,20.98-3.59,32.88-3.65,7.77.04,15.86.14,23.36,2.3,12.99,4,24.75,13.6,31.17,25.74,2.46,5.43-.33,6.57-5.02,6.76-7.95.55-24.49,1.91-34.8,2.48-3.05.13-5.39.38-8.1.03-3.99-.57-7.99-2.09-12.1-1.56-8.91,1.26-7.17,8.86-.94,12.09,7.23,3.98,16.77,4.38,24.49,6.6,7.18,2.18,13.8,5,20.17,9.76,9.88,6.98,17.58,19.97,15.32,29.07l-.03.15Z"/>
+              <path fill="white" d="M763.51,114.81c-13.52-23.21-44.83-34.06-67.98-18.89-2.34,1.38-6.15,3.84-8.33,3.49-3.65-2.01-1.21-10.49-1.89-15.06,0-10.96.01-25.44,0-31.98.59-5.25-3.05-6.63-7.82-6.26-11.2.87-25.01.86-35.99,2.98-5.55,13.05-.09,145.63-1.61,161.27-1.4,6.99,30.48,3.01,36.54,3.71,2.94-.1,6.7.19,8.12-2.83,5.25-20.11-12.93-93.48,28.09-86.15,25.66,13.46,12.68,63.09,15.4,83.97,1,7.93,14.35,4.55,22.44,5.31,6.44-.51,16.71.72,21.1-1.52,1.87-1.46,1.98-4.89,2.04-7.45-.68-26.75,5.2-68.4-9.99-90.44l-.1-.15Z"/>
+              <path fill="white" d="M872.39,152.95c-.47,16.71-11.44,32.4-26.27,27.97-6.92-1.72-12.99-10.37-14.67-18.3-2.04-7.44-1.74-13.31-1.74-20.66,0-11.31,0-29.07,0-35.83.12-3.02-.16-5.01-3.6-5.48-6.15-1.39-24.07-.61-33.13-.47-9.05-.5-8.78,3.66-8.79,12.04-.05,6.9-.24,13.34-.32,20.61-.1,25.68.02,47.36,15.1,64.48,14.09,18.19,39.25,26.12,59.86,14.21,4.95-2.59,8.61-5.33,10.8-5.87.46-.1.85-.14,1.25.04,1.25.52,1.57,3.53,3.32,5.48,1.75,2.12,4.69,2.38,7.29,2.23,3.54-.2,7.55-.52,11.66-.79,5.43-.39,10.98-.76,15.74-1.12,2.6-.18,7.25-.93,8.45-2.4.79-.84.83-2.05.83-3.21-.08-15.73.09-77.91-.03-101.72.1-3.38-3.49-3.9-7.82-3.94-4.75-.05-9.76-.22-14.69-.3-4.68.19-20.77-1.08-22.67,2.57-1.23,14.25.18,35.84-.57,50.29v.17Z"/>
+              <path fill="white" d="M1062.29,149.55c-.53-34.24-28.12-66.45-62.38-59.89-18.7,3.49-28.15,22.8-26.17-.74.17-11.9.86-26.38-.29-37.72-.38-5.54-2.21-5.79-7.36-5.15-7.37.52-23.2,1.62-30.56,2.14-3.51.48-4.71-.23-6.03,1.35-4.04,12.72-.64,128.1-1,162.7,7.87,4.38,27.2,1.3,37.6,1.86,8.17.99,5.84-6.51,11.6-6.97,39.46,28.59,88.9-9.23,84.6-57.35v-.21ZM1016.64,153.4c.01,6.95-2.51,15.33-6.06,20.03-6.03,8.73-16.99,11.33-25.46,5.34-15.34-11.19-15.1-40.97.43-51.89,7.94-5.39,18.19-3.27,24.21,4.32,4.21,4.79,7.15,14.21,6.88,21.93v.26Z"/>
+            </svg>
+        </div>
+        <nav class="rodape-nav">
+            <span class="rodape-btn" data-acao="home" data-i18n="nav.home">HOME</span>
+            <span class="rodape-btn" data-acao="projects" data-i18n="nav.projects">PROJECTS</span>
+            <span class="rodape-btn" data-acao="contact" data-i18n="nav.contact">CONTACT</span>
+            <span class="rodape-btn" data-acao="about" data-i18n="nav.about">ABOUT US</span>
+            <span class="rodape-btn" data-acao="login" data-i18n="nav.login">LOGIN</span>
+        </nav>
+        <nav class="rodape-redes">
+            <a href="https://www.instagram.com/hubnoas/" target="_blank" class="rodape-btn">INSTAGRAM</a>
+            <a href="https://www.behance.net/noashub" target="_blank" class="rodape-btn">BEHANCE</a>
+            <a href="https://www.linkedin.com/in/hugo-alexandre-maas-663984134/" target="_blank" class="rodape-btn">LINKEDIN</a>
+        </nav>
+        <p class="copyright">developed by Noa's hub / 2026</p>
+    </footer>
+
+    <!-- ÍCONE FLUTUANTE DE CONTATO -->
+    <button id="btn-chat-flutuante" class="chat-flutuante" aria-label="Abrir contato">
+        <span class="chat-flutuante-glow"></span>
+        <svg class="chat-flutuante-icon" viewBox="0 0 416 335" xmlns="http://www.w3.org/2000/svg">
+            <path d="M96 0H320C371.6 0 413 41.4 413 92V178C413 229.6 371.6 271 320 271H293L268 322C263.5 331 250.5 331 246 322L221 271H96C44.4 271 3 229.6 3 178V92C3 41.4 44.4 0 96 0Z" fill="#fff" fill-opacity="0.85"/>
+            <circle class="chat-dot chat-dot-1" cx="128" cy="136" r="22"/>
+            <circle class="chat-dot chat-dot-2" cx="208" cy="136" r="22"/>
+            <circle class="chat-dot chat-dot-3" cx="288" cy="136" r="22"/>
+        </svg>
+    </button>
+
+    <!-- OVERLAY -->
+    <div id="content-overlay">
+        <div class="overlay-content">
+            <button id="close-overlay">&times;</button>
+            <div id="dynamic-content"></div>
+        </div>
+    </div>
+
+    <!-- TEMPLATES OCULTOS -->
+    <div id="tpl-login" style="display:none;">
+        <div class="janela-flutuante">
+            <button class="janela-close js-fechar">&times;</button>
+            <h2 class="janela-titulo">LOGIN</h2>
+            <form class="janela-form" onsubmit="return false;">
+                <div class="campo-grupo">
+                    <label class="campo-label">E-mail</label>
+                    <input type="email" class="campo-input" placeholder="seu@email.com">
+                </div>
+                <div class="campo-grupo">
+                    <label class="campo-label" data-i18n="login.password.label">Senha</label>
+                    <input type="password" class="campo-input" placeholder="••••••••">
+                </div>
+                <button type="submit" class="janela-btn" data-i18n="login.submit">ENTRAR</button>
+                <a href="#" class="janela-link" data-i18n="login.forgot">Esqueceu a senha?</a>
+            </form>
+        </div>
+    </div>
+
+    <div id="tpl-contact" style="display:none;">
+        <div class="janela-flutuante janela-contact">
+            <button class="janela-close js-fechar">&times;</button>
+            <h2 class="janela-titulo">CONTACT</h2>
+            <form class="janela-form" id="form-contato">
+                <div class="campo-grupo">
+                    <label class="campo-label" data-i18n="contact.name.label">Seu nome</label>
+                    <input type="text" class="campo-input" id="contact-nome" name="nome" placeholder="Nome completo" data-i18n-placeholder="contact.name.placeholder" required>
+                </div>
+                <div class="campo-grupo">
+                    <label class="campo-label" data-i18n="contact.email.label">Seu e-mail</label>
+                    <input type="email" class="campo-input" id="contact-email" name="email" placeholder="seu@email.com" required>
+                </div>
+                <div class="campo-grupo">
+                    <label class="campo-label" data-i18n="contact.msg.label">Mensagem</label>
+                    <textarea class="campo-input campo-textarea" id="contact-msg" name="mensagem" placeholder="Como posso te ajudar?" data-i18n-placeholder="contact.msg.placeholder" required></textarea>
+                </div>
+                <button type="submit" class="janela-btn" id="contact-submit" data-i18n="contact.submit">ENVIAR</button>
+                <p class="janela-feedback" id="contact-feedback"></p>
+            </form>
+        </div>
+    </div>
+
+    <div id="tpl-about" style="display:none;">
+        <div class="janela-flutuante janela-about">
+            <button class="janela-close js-fechar">&times;</button>
+            <div class="about-page">
+                <div class="about-hero">
+                    <img src="../images/logo-noap.svg" alt="Noa's hub" class="about-logo">
+                    <p class="about-tagline">APEX CONCEPTS</p>
+                </div>
+                <div class="about-grid">
+                    <div class="about-bloco">
+                        <h3 class="about-bloco-titulo" data-i18n="about.who.title">QUEM SOMOS</h3>
+                        <p class="about-bloco-texto" data-i18n="about.who.text">A Noa's é um hub criativo focado em soluções visuais de alto impacto. Unimos estética e tecnologia para criar experiências com personalidade.</p>
+                    </div>
+                    <div class="about-bloco">
+                        <h3 class="about-bloco-titulo" data-i18n="about.what.title">O QUE FAZEMOS</h3>
+                        <p class="about-bloco-texto" data-i18n="about.what.text">Conceitos visuais que geram valor.</p>
+                    </div>
+                    <div class="about-bloco">
+                        <h3 class="about-bloco-titulo" data-i18n="about.contact.title">CONTATO</h3>
+                        <p class="about-bloco-texto">
+                            noashub@gmail.com<br>
+                            <a href="https://www.instagram.com/hubnoas/" target="_blank" class="about-link">Instagram</a> ·
+                            <a href="https://www.behance.net/noashub" target="_blank" class="about-link">Behance</a> ·
+                            <a href="https://www.linkedin.com/in/hugo-alexandre-maas-663984134/" target="_blank" class="about-link">LinkedIn</a>
+                        </p>
+                    </div>
+                </div>
+                <p class="about-rodape">Noa's hub © 2026</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/i18n.js"></script>
     <script src="../js/projeto-sidebar.js"></script>
+    <script src="../js/projeto-footer.js"></script>
+    <script src="../js/projeto-lightbox.js"></script>
 </body>
 </html>

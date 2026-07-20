@@ -5,6 +5,7 @@ const _t = {
     'nav.contact':              'CONTATO',
     'nav.about':                'SOBRE NÓS',
     'nav.login':                'ENTRAR',
+    'nav.back':                 'VOLTAR',
     'fone.subtitulo':           'Projeto vencedor no concurso da Unhide + Logitech.',
     'project.see':              'VER PROJETO',
     'project.bocarosa.desc':    'Recriação 3D da campanha na collab da Boca Rosa e Adidas.',
@@ -12,6 +13,9 @@ const _t = {
     'project.fr.desc':          'Projetos autorais usando FOOH não são apenas visualmente incríveis; eles são máquinas de retenção.',
     'project.guarana.desc':     'Projeto autoral FOOH das latas comemorativas do Guaraná.',
     'project.mansao.desc':      'Proposta de display para o produto Ressaliv da Super CIMED e Mansão Maromba.',
+    'project.guaranarenner.desc': 'Projeto autoral de vídeo para a collab Guaraná Antarctica + Lojas Renner.',
+    'project.guaranarenner.full': 'Design conectando o brasileiro à sua maior paixão. No desenvolvimento desse projeto autoral* de vídeo para a collab Guaraná Antarctica + Lojas Renner, o desafio não era apenas mostrar produtos, mas capturar a verdadeira "sede de torcer" e o orgulho do único país pentacampeão do mundo. Transformamos a nostalgia das camisas históricas e a energia da nossa torcida em uma narrativa visual dinâmica, comercial e de alto impacto sensorial provando que uma marca forte não vende apenas o produto final, ela entrega a sensação de fazer parte da história. Seu audiovisual hoje está gerando esse nível de desejo e conexão emocional nas suas campanhas? Vamos crescer mais, envie uma mensagem clicando no botão de mensagem ao lado para conversarmos sobre seu projeto!',
+    'project.nota.embreve':     'IMAGENS EM BREVE',
     'login.password.label':     'Senha',
     'login.submit':             'ENTRAR',
     'login.forgot':             'Esqueceu a senha?',
@@ -39,13 +43,17 @@ const _t = {
     'nav.contact':              'CONTACT',
     'nav.about':                'ABOUT US',
     'nav.login':                'LOGIN',
+    'nav.back':                 'BACK',
     'fone.subtitulo':           'Award-winning project in the Unhide + Logitech competition.',
     'project.see':              'SEE PROJECT',
     'project.bocarosa.desc':    '3D recreation of the Boca Rosa × Adidas collab campaign.',
     'project.cacaushow.desc':   'Conceptual campaign for portfolio: Bytes, the fan snack.',
-    'project.fr.desc':          'Original FOOH projects are not just visually stunning — they are retention machines.',
+    'project.fr.desc':          'Original FOOH projects are not just visually stunning; they are retention machines.',
     'project.guarana.desc':     "Original FOOH project for Guaraná's commemorative cans.",
     'project.mansao.desc':      'Display proposal for Ressaliv by Super CIMED and Mansão Maromba.',
+    'project.guaranarenner.desc': 'Original video project for the Guaraná Antarctica + Lojas Renner collab.',
+    'project.guaranarenner.full': 'Design connecting Brazilians to their greatest passion. In developing this original* video project for the Guaraná Antarctica + Lojas Renner collab, the challenge wasn\'t just to show products, but to capture the true "thirst to cheer" and the pride of the only five-time world champion country. We turned the nostalgia of historic jerseys and the energy of our fans into a dynamic, commercial, high-sensory-impact visual narrative, proving that a strong brand doesn\'t just sell the final product: it delivers the feeling of being part of history. Is your brand\'s audiovisual generating this level of desire and emotional connection in your campaigns today? Let\'s grow further, send a message by clicking the message button beside this to talk about your project!',
+    'project.nota.embreve':     'IMAGES COMING SOON',
     'login.password.label':     'Password',
     'login.submit':             'SIGN IN',
     'login.forgot':             'Forgot your password?',
@@ -93,9 +101,13 @@ window.i18n = {
     this.lang = lang;
     localStorage.setItem('noaslang', lang);
     document.documentElement.lang = lang === 'pt' ? 'pt-br' : 'en';
-    document.title = this.t('meta.title');
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) metaDesc.content = this.t('meta.description');
+    // Só sobrescreve title/description genéricos na home (onde existe o
+    // seletor de idioma) — páginas de projeto têm título/descrição próprios.
+    if (document.querySelector('.lang-toggle')) {
+        document.title = this.t('meta.title');
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.content = this.t('meta.description');
+    }
     this.apply();
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.classList.toggle('ativo', btn.dataset.lang === lang);

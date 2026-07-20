@@ -40,8 +40,13 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
 
 /* --- 3. FONE E TÍTULO --- */
 .sessao-animacao { height: 300vh; background: #000; position: relative; }
-.sticky-container { position: sticky; top: 0; width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; }
-#animacao-scroll { max-width: 100vw; max-height: 85vh; width: auto; height: auto; display: block; object-fit: contain; }
+.sticky-container { position: sticky; top: 0; width: 100%; height: 100vh; height: 100dvh; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+#animacao-scroll { max-width: 100vw; max-height: 85vh; max-height: 85dvh; width: auto; height: auto; display: block; object-fit: contain; }
+
+@media (max-width: 900px) {
+    /* Menos scroll "morto" antes/depois da rotação do fone no celular */
+    .sessao-animacao { height: 160vh; height: 160dvh; }
+}
 
 /* Título do fone */
 .fone-titulo {
@@ -126,6 +131,26 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
 }
 #close-overlay { display: none; } /* X agora fica dentro da janela */
 
+/* Seletor de idioma — continua acessível mesmo com Contato/Login/Sobre abertos */
+.overlay-lang-toggle {
+    position: fixed; top: 24px; right: max(40px, calc(50% - 480px)); z-index: 10001;
+    display: flex; align-items: center; gap: 6px;
+    background: rgba(15, 25, 25, 0.6); backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50px; padding: 5px 12px;
+}
+.overlay-lang-toggle .lang-sep { color: rgba(255,255,255,0.25); font-size: 0.65rem; }
+.overlay-lang-toggle .lang-btn {
+    color: rgba(255,255,255,0.45); cursor: pointer;
+    font-size: 0.65rem; font-weight: bold; letter-spacing: 0.08em;
+    transition: color 0.3s;
+}
+.overlay-lang-toggle .lang-btn:hover { color: rgba(255,255,255,0.8); }
+.overlay-lang-toggle .lang-btn.ativo { color: #fff; }
+@media (max-width: 900px) {
+    .overlay-lang-toggle { top: 16px; right: 16px; padding: 4px 10px; }
+}
+
 /* X dentro da janela-flutuante */
 .janela-close {
     position: absolute; top: 14px; right: 18px;
@@ -144,6 +169,7 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
     .barra-botoes {
         top: 70px; left: 10px !important; right: 10px !important;
         padding: 5px 10px; gap: 5px; justify-content: space-around;
+        flex-wrap: wrap; row-gap: 4px;
     }
     .botao { font-size: 0.6rem; padding: 5px 8px; }
 }
@@ -205,6 +231,12 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
     position: relative;
     overflow: hidden;
     margin-bottom: 12px;
+}
+@media (max-width: 900px) {
+    /* No celular a proporção larga deixa o banner baixo demais e a
+       barra de navegação fixa acaba cobrindo o conteúdo principal;
+       damos mais altura pra caber logo + nav + imagem confortavelmente. */
+    .container { aspect-ratio: 3 / 4; max-height: 620px; }
 }
 .banner { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: 1s; }
 .banner.ativa { opacity: 1; }
@@ -398,6 +430,7 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
 .janela-about {
     width: min(700px, calc(100vw - 40px));
     max-height: 90vh;
+    max-height: 90dvh;
     overflow-y: auto;
     padding: 40px 40px 30px;
 }
@@ -519,6 +552,7 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
     width: 92%;
     max-width: 1200px;
     max-height: 92vh;
+    max-height: 92dvh;
     overflow-y: auto;
     position: relative;
     padding: 40px;

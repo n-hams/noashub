@@ -90,7 +90,7 @@ document.getElementById('form-contato').addEventListener('submit', function(e) {
     btn.textContent = 'ENVIANDO...';
 
     // Envia via mailto como fallback (substitua pela sua API quando tiver)
-    const assunto = encodeURIComponent('Contato via NOAP.hub — ' + nome);
+    const assunto = encodeURIComponent('Contato via NOAP.hub - ' + nome);
     const corpo   = encodeURIComponent('Nome: ' + nome + '\nEmail: ' + email + '\n\n' + msg);
     window.open('mailto:noashub@gmail.com?subject=' + assunto + '&body=' + corpo);
 

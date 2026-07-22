@@ -28,6 +28,11 @@
 </head>
 <body id="inicio">
 
+    <!-- Degradê de blur atrás do cabeçalho: some com o que passa por baixo da logo/barra ao rolar -->
+    <div class="header-blur" aria-hidden="true">
+        <div></div><div></div><div></div><div></div>
+    </div>
+
     <div class="container">
         <div id="relogio"></div>
 
@@ -117,6 +122,8 @@
             <img src="images/banner_06_logo.png" class="b06-logo" alt="Logo">
         </div>
     </div>
+    <button class="banner-nav banner-nav-prev" id="banner-prev" aria-label="Banner anterior">&#10094;</button>
+    <button class="banner-nav banner-nav-next" id="banner-next" aria-label="Próximo banner">&#10095;</button>
     <div class="banner-dots" id="banner-dots"></div>
 
         <div class="barra-botoes">
@@ -136,6 +143,8 @@
 
     <!-- CARROSSEL DE PROJETOS -->
     <section class="projetos-carrossel">
+        <button class="carrossel-nav carrossel-prev" id="carrossel-prev" aria-label="Projeto anterior">&#10094;</button>
+        <button class="carrossel-nav carrossel-next" id="carrossel-next" aria-label="Próximo projeto">&#10095;</button>
         <div class="projetos-track" id="projetos-track">
             <div class="projeto-card"
                  data-slug="boca-rosa"
@@ -219,6 +228,61 @@
                     card.setAttribute('tabindex', '-1');
                 }
             });
+
+            // --- Motor de posição (autoplay + setas manuais) ---
+            const carrossel = document.querySelector('.projetos-carrossel');
+            const btnPrev = document.getElementById('carrossel-prev');
+            const btnNext = document.getElementById('carrossel-next');
+
+            const DURACAO_CICLO = 32000; // ms para percorrer 1 "conjunto", mesmo ritmo de antes
+            let oneSetWidth = 0;
+            let posX = 0;
+            let pausadoHover = false;
+            let pausaManual = null;
+            let ultimoFrame = null;
+
+            function medir() {
+                oneSetWidth = track.scrollWidth / 4;
+            }
+            medir();
+            window.addEventListener('resize', medir);
+
+            function aplicar() {
+                track.style.transform = `translateX(-${posX}px)`;
+            }
+
+            function loop(ts) {
+                if (ultimoFrame === null) ultimoFrame = ts;
+                const dt = ts - ultimoFrame;
+                ultimoFrame = ts;
+                if (!pausadoHover && !pausaManual && oneSetWidth > 0) {
+                    posX += (oneSetWidth / DURACAO_CICLO) * dt;
+                    if (posX >= oneSetWidth) posX -= oneSetWidth;
+                    aplicar();
+                }
+                requestAnimationFrame(loop);
+            }
+            requestAnimationFrame(loop);
+
+            carrossel.addEventListener('mouseenter', () => { pausadoHover = true; });
+            carrossel.addEventListener('mouseleave', () => { pausadoHover = false; });
+
+            function passo(direcao) {
+                const card = track.querySelector('.projeto-card');
+                const passoPx = card.getBoundingClientRect().width + 12; // largura do card + gap
+                clearTimeout(pausaManual);
+                track.classList.add('com-transicao');
+                posX += direcao * passoPx;
+                if (posX >= oneSetWidth) posX -= oneSetWidth;
+                if (posX < 0) posX += oneSetWidth;
+                aplicar();
+                pausaManual = setTimeout(() => {
+                    track.classList.remove('com-transicao');
+                    pausaManual = null;
+                }, 3000);
+            }
+            btnPrev.addEventListener('click', () => passo(-1));
+            btnNext.addEventListener('click', () => passo(1));
         })();
     </script>
 

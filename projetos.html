@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-58TKKYZ0KH"></script>
     <script>
@@ -11,14 +9,23 @@
       gtag('js', new Date());
       gtag('config', 'G-58TKKYZ0KH');
     </script>
-    <title>Cacau Show Bytes | Noa's Apex Concepts</title>
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/projeto.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos os Projetos | Noa's Apex Concepts</title>
+    <meta name="description" content="Veja todos os projetos autorais e comerciais da Noa's hub: 3D, CGI, VFX, FOOH e IA em um só lugar.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="projeto-page" data-projeto="cacau-show">
+<body>
 
-    <a href="../index.html" class="logo-link">
+    <!-- Degradê de blur atrás do cabeçalho: some com o que passa por baixo da logo/barra ao rolar -->
+    <div class="header-blur" aria-hidden="true">
+        <div></div><div></div><div></div><div></div>
+    </div>
+
+    <div id="relogio"></div>
+
+    <a href="index.html" class="logo-link" id="btn-home">
         <svg class="logo-noap" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1108.69 263.61" aria-label="Noa's hub">
           <defs>
             <style>
@@ -78,29 +85,72 @@
                 filter="url(#shimmer-glow)"/>
         </svg>
     </a>
-    <a href="../projetos.html" class="projeto-voltar">&larr; <span data-i18n="nav.back">VOLTAR</span></a>
 
-    <div class="projeto-lang-toggle">
-        <span class="lang-btn" data-lang="pt">PT</span>
-        <span class="lang-sep">|</span>
-        <span class="lang-btn" data-lang="en">EN</span>
+    <div class="barra-botoes">
+        <div class="botao" id="btn-nav-home" data-i18n="nav.home">HOME</div>
+        <div class="botao" id="btn-projects" data-i18n="nav.projects">PROJECTS</div>
+        <div class="botao" id="btn-contact" data-i18n="nav.contact">CONTACT</div>
+        <div class="botao" id="btn-about" data-i18n="nav.about">ABOUT US</div>
+        <div class="botao" id="btn-login" data-i18n="nav.login">LOGIN</div>
+        <div class="lang-toggle">
+            <span class="lang-btn" data-lang="pt">PT</span>
+            <span class="lang-sep">|</span>
+            <span class="lang-btn" data-lang="en">EN</span>
+        </div>
     </div>
 
-    <aside class="projeto-sidebar" id="projeto-sidebar"></aside>
+    <section class="grid-projetos">
+        <h1 class="grid-projetos-titulo" data-i18n="projects.page.title">TODOS OS PROJETOS</h1>
+        <div class="grid-projetos-lista">
+            <a href="projetos/boca-rosa.html" class="grid-card">
+                <div class="grid-card-titulo">Boca Rosa</div>
+                <div class="grid-card-img-wrap">
+                    <img src="animations/gp_01_bocarosa.gif" alt="Boca Rosa" class="grid-card-gif">
+                    <div class="grid-card-hover"><span data-i18n="project.see">VER PROJETO</span></div>
+                </div>
+            </a>
 
-    <main class="projeto-main">
-        <div class="projeto-conteudo">
-            <h1 class="projeto-titulo">Cacau Show Bytes</h1>
-            <p class="projeto-desc" data-i18n="project.cacaushow.desc">Campanha conceitual para portfólio dos Bytes, o snack do torcedor.</p>
+            <a href="projetos/cacau-show.html" class="grid-card">
+                <div class="grid-card-titulo">Cacau Show Bytes</div>
+                <div class="grid-card-img-wrap">
+                    <img src="animations/gp_02_cacaushow.gif" alt="Cacau Show Bytes" class="grid-card-gif">
+                    <div class="grid-card-hover"><span data-i18n="project.see">VER PROJETO</span></div>
+                </div>
+            </a>
 
-            <div class="projeto-video-wrap">
-                <iframe src="https://player.vimeo.com/video/1203563816?color=d76234&title=0&byline=0&portrait=0"
-                    frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-            </div>
+            <a href="projetos/gloss-fran.html" class="grid-card">
+                <div class="grid-card-titulo">Gloss Labial Fran</div>
+                <div class="grid-card-img-wrap">
+                    <img src="animations/gp_03_fr.gif" alt="Gloss Labial Fran" class="grid-card-gif">
+                    <div class="grid-card-hover"><span data-i18n="project.see">VER PROJETO</span></div>
+                </div>
+            </a>
 
-            <p class="projeto-nota" data-i18n="project.nota.embreve">IMAGENS EM BREVE</p>
+            <a href="projetos/guarana.html" class="grid-card">
+                <div class="grid-card-titulo">Guaraná</div>
+                <div class="grid-card-img-wrap">
+                    <img src="animations/gp_04_guarana.gif" alt="Guaraná" class="grid-card-gif">
+                    <div class="grid-card-hover"><span data-i18n="project.see">VER PROJETO</span></div>
+                </div>
+            </a>
+
+            <a href="projetos/super-leve.html" class="grid-card">
+                <div class="grid-card-titulo">Super Leve</div>
+                <div class="grid-card-img-wrap">
+                    <img src="animations/gp_05_mansao.gif" alt="Super Leve" class="grid-card-gif">
+                    <div class="grid-card-hover"><span data-i18n="project.see">VER PROJETO</span></div>
+                </div>
+            </a>
+
+            <a href="projetos/guarana-renner.html" class="grid-card">
+                <div class="grid-card-titulo">Lojas Renner e Guaraná Antarctica</div>
+                <div class="grid-card-img-wrap">
+                    <img src="images/Projeto_Guaranaerenner_01.png" alt="Lojas Renner e Guaraná Antarctica" class="grid-card-gif">
+                    <div class="grid-card-hover"><span data-i18n="project.see">VER PROJETO</span></div>
+                </div>
+            </a>
         </div>
-    </main>
+    </section>
 
     <footer class="rodape-final">
         <div class="rodape-logo">
@@ -143,6 +193,11 @@
 
     <!-- OVERLAY -->
     <div id="content-overlay">
+        <div class="site-lang-toggle-corner">
+            <span class="lang-btn" data-lang="pt">PT</span>
+            <span class="lang-sep">|</span>
+            <span class="lang-btn" data-lang="en">EN</span>
+        </div>
         <div class="overlay-content">
             <button id="close-overlay">&times;</button>
             <div id="dynamic-content"></div>
@@ -197,7 +252,7 @@
             <button class="janela-close js-fechar">&times;</button>
             <div class="about-page">
                 <div class="about-hero">
-                    <img src="../images/logo-noap.svg" alt="Noa's hub" class="about-logo">
+                    <img src="images/logo-noap.svg" alt="Noa's hub" class="about-logo">
                     <p class="about-tagline">APEX CONCEPTS</p>
                 </div>
                 <div class="about-grid">
@@ -224,9 +279,8 @@
         </div>
     </div>
 
-    <script src="../js/i18n.js"></script>
-    <script src="../js/projeto-sidebar.js"></script>
-    <script src="../js/projeto-footer.js"></script>
-    <script src="../js/projeto-lightbox.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/loader.js"></script>
+
 </body>
 </html>

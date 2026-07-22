@@ -2,6 +2,7 @@ const _t = {
   pt: {
     'nav.home':                 'INÍCIO',
     'nav.projects':             'PROJETOS',
+    'projects.page.title':      'TODOS OS PROJETOS',
     'nav.contact':              'CONTATO',
     'nav.about':                'SOBRE NÓS',
     'nav.login':                'ENTRAR',
@@ -40,6 +41,7 @@ const _t = {
   en: {
     'nav.home':                 'HOME',
     'nav.projects':             'PROJECTS',
+    'projects.page.title':      'ALL PROJECTS',
     'nav.contact':              'CONTACT',
     'nav.about':                'ABOUT US',
     'nav.login':                'LOGIN',

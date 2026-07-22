@@ -4,6 +4,46 @@ html { scroll-behavior: smooth; } /* Permite scroll suave nativo */
 body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x: hidden; }
 
 /* --- 2. CABEÇALHO --- */
+
+/* Blur em degradê atrás do cabeçalho — o que rola por baixo da logo/barra
+   de botões vai sumindo suavemente em vez de se misturar com elas.
+   Fica logo abaixo (z-index) da logo e da barra, e não recebe clique. */
+.header-blur {
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    height: 100px;
+    z-index: 400;
+    pointer-events: none;
+}
+.header-blur > div { position: absolute; inset: 0; }
+.header-blur > div:nth-child(1) {
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    mask-image: linear-gradient(to top, transparent 0%, white 35%, white 50%, transparent 65%);
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, white 35%, white 50%, transparent 65%);
+}
+.header-blur > div:nth-child(2) {
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    mask-image: linear-gradient(to top, transparent 25%, white 50%, white 65%, transparent 80%);
+    -webkit-mask-image: linear-gradient(to top, transparent 25%, white 50%, white 65%, transparent 80%);
+}
+.header-blur > div:nth-child(3) {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    mask-image: linear-gradient(to top, transparent 45%, white 65%, white 80%, transparent 95%);
+    -webkit-mask-image: linear-gradient(to top, transparent 45%, white 65%, white 80%, transparent 95%);
+}
+.header-blur > div:nth-child(4) {
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    mask-image: linear-gradient(to top, transparent 65%, white 85%, white 100%);
+    -webkit-mask-image: linear-gradient(to top, transparent 65%, white 85%, white 100%);
+}
+@media (max-width: 900px) {
+    .header-blur { height: 120px; }
+}
+
 .logo-link { position: fixed; top: 40px; left: max(40px, calc(50% - 480px)); z-index: 10000; text-decoration: none; cursor: pointer; }
 #relogio {
     position: fixed;
@@ -251,7 +291,7 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
 .redes-sociais a { color: white; text-decoration: none; font-size: 0.7rem; opacity: 0.5; transition: 0.3s; }
 .apex-vertical {
     position: absolute;
-    right: 28px;
+    right: 12px;
     top: 50%;
     transform: translateY(-50%) rotate(180deg);
     writing-mode: vertical-rl;
@@ -265,7 +305,11 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
     user-select: none;
     pointer-events: none;
 }
-@media (max-width: 900px) { .apex-vertical { display: none; } }
+@media (max-width: 900px) {
+    /* Continua visível no celular, perto da borda — a seta do banner
+       fica mais pra dentro (right: 44px) pra não sobrepor. */
+    .apex-vertical { right: 10px; font-size: 0.55rem; }
+}
 
 
 /* INDICADORES DO BANNER */
@@ -300,6 +344,35 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
 }
 .banner-dot.completo .banner-dot-fill { width: 100%; }
 @keyframes dotProgress { from { width: 0% } to { width: 100% } }
+
+/* SETAS DE NAVEGAÇÃO DO BANNER */
+.banner-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(15, 25, 25, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.85);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 150;
+    transition: background 0.3s, border-color 0.3s;
+}
+.banner-nav:hover { background: rgba(15, 25, 25, 0.85); border-color: rgba(255,255,255,0.5); }
+.banner-nav-prev { left: 45px; }
+.banner-nav-next { right: 45px; }
+@media (max-width: 900px) {
+    .banner-nav { width: 32px; height: 32px; font-size: 0.75rem; }
+    .banner-nav-prev { left: 44px; }
+    .banner-nav-next { right: 44px; }
+}
 
 /* ESTRUTURA DO BANNER COMPOSTO */
 .banner-composto {
@@ -491,17 +564,43 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
     background: #000;
     overflow: hidden;
     padding: 40px 0;
+    position: relative;
 }
 .projetos-track {
     display: flex;
     width: max-content;
     gap: 12px;
-    animation: carrosselDireita 32s linear infinite;
+    will-change: transform;
 }
-.projetos-carrossel:hover .projetos-track { animation-play-state: paused; }
-@keyframes carrosselDireita {
-    from { transform: translateX(-25%); }
-    to   { transform: translateX(0%); }
+.projetos-track.com-transicao { transition: transform 0.4s ease; }
+
+/* SETAS DE NAVEGAÇÃO DO CARROSSEL */
+.projetos-carrossel .carrossel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(15, 25, 25, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.85);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+    transition: background 0.3s, border-color 0.3s;
+}
+.projetos-carrossel .carrossel-nav:hover { background: rgba(15, 25, 25, 0.85); border-color: rgba(255,255,255,0.5); }
+.carrossel-prev { left: 16px; }
+.carrossel-next { right: 16px; }
+@media (max-width: 900px) {
+    .projetos-carrossel .carrossel-nav { width: 34px; height: 34px; font-size: 0.85rem; }
+    .carrossel-prev { left: 8px; }
+    .carrossel-next { right: 8px; }
 }
 .projeto-card {
     width: 300px;
@@ -540,6 +639,69 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
     border: 1px solid rgba(255,255,255,0.5);
     padding: 8px 18px;
     border-radius: 50px;
+}
+
+/* --- GRID DE TODOS OS PROJETOS (projetos.html) --- */
+.grid-projetos {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 160px 40px 80px;
+}
+.grid-projetos-titulo {
+    color: white;
+    font-size: 1.4rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    margin-bottom: 32px;
+}
+.grid-projetos-lista {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 20px;
+}
+.grid-card { text-decoration: none; display: block; }
+.grid-card-titulo {
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 0.03em;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    /* Reserva sempre a altura de 2 linhas, mesmo em títulos curtos —
+       assim as imagens da fileira ficam sempre alinhadas, título
+       comprido ou não. */
+    min-height: calc(1.4em * 2);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.grid-card-img-wrap {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 14px;
+    background: #111;
+}
+.grid-card-gif { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+.grid-card:hover .grid-card-gif { transform: scale(1.05); }
+.grid-card-hover {
+    position: absolute; inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.3s;
+}
+.grid-card:hover .grid-card-hover { opacity: 1; }
+.grid-card-hover span {
+    color: white; font-size: 0.7rem; font-weight: bold; letter-spacing: 0.2em;
+    border: 1px solid rgba(255,255,255,0.5); padding: 8px 18px; border-radius: 50px;
+}
+@media (max-width: 900px) {
+    .grid-projetos { padding: 130px 20px 60px; }
+    .grid-projetos-lista { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .grid-projetos-titulo { font-size: 1.1rem; margin-bottom: 20px; }
+    .grid-card-titulo { font-size: 0.72rem; min-height: calc(1.4em * 2); }
 }
 
 /* --- MODAL VIMEO --- */

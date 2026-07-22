@@ -99,4 +99,11 @@ function irPara(index) {
 
 irPara(0);
 
+document.getElementById('banner-prev').addEventListener('click', () => {
+    irPara((bannerAtual - 1 + banners.length) % banners.length);
+});
+document.getElementById('banner-next').addEventListener('click', () => {
+    irPara((bannerAtual + 1) % banners.length);
+});
+
 images[0].onload = () => render(0);

@@ -59,7 +59,7 @@ overlay.addEventListener('click', (e) => { if (e.target === overlay) fechar(); }
 
 const acoes = {
     home:     () => { window.location.href = '../index.html'; },
-    projects: () => { window.location.href = 'boca-rosa.html'; },
+    projects: () => { window.location.href = '../projetos.html'; },
     contact:  () => abrirOverlay('tpl-contact'),
     about:    () => abrirOverlay('tpl-about'),
     login:    () => abrirOverlay('tpl-login'),

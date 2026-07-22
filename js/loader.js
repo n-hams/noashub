@@ -61,12 +61,20 @@ function fechar() {
 }
 
 // --- BOTÕES ---
+// Nome do arquivo atual ('' ou 'index.html' = home)
+const paginaAtual = location.pathname.split('/').pop();
+const estaNaHome = paginaAtual === '' || paginaAtual === 'index.html';
+
 document.getElementById('btn-nav-home').addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (estaNaHome) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+        window.location.href = 'index.html';
+    }
 });
 
 document.getElementById('btn-projects').addEventListener('click', () => {
-    window.location.href = 'projetos/boca-rosa.html';
+    window.location.href = 'projetos.html';
 });
 
 document.getElementById('btn-contact').addEventListener('click', () => abrirOverlay('tpl-contact'));
@@ -80,10 +88,13 @@ if (btnChatFlutuante) btnChatFlutuante.addEventListener('click', () => abrirOver
 if (closeBtn) closeBtn.addEventListener('click', fechar);
 overlay.addEventListener('click', (e) => { if (e.target === overlay) fechar(); });
 
-// --- CLIQUE NA LOGO (Voltar ao topo) ---
+// --- CLIQUE NA LOGO (Voltar ao topo / voltar pra home) ---
 document.getElementById('btn-home').addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (estaNaHome) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    // fora da home, deixa o <a href="index.html"> navegar normalmente
 });
 
 // --- MODAL VIMEO ---
@@ -173,8 +184,8 @@ if (foneTitulo) {
 
 // --- BOTÕES DO RODAPÉ ---
 const acoes = {
-    home:     () => window.scrollTo({ top: 0, behavior: 'smooth' }),
-    projects: () => { window.location.href = 'projetos/boca-rosa.html'; },
+    home:     () => { if (estaNaHome) { window.scrollTo({ top: 0, behavior: 'smooth' }); } else { window.location.href = 'index.html'; } },
+    projects: () => { window.location.href = 'projetos.html'; },
     contact:  () => abrirOverlay('tpl-contact'),
     about:    () => abrirOverlay('tpl-about'),
     login:    () => abrirOverlay('tpl-login'),

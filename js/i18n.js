@@ -17,6 +17,9 @@ const _t = {
     'project.guaranarenner.desc': 'Projeto autoral de vídeo para a collab Guaraná Antarctica + Lojas Renner.',
     'project.guaranarenner.full': 'Design conectando o brasileiro à sua maior paixão. No desenvolvimento desse projeto autoral* de vídeo para a collab Guaraná Antarctica + Lojas Renner, o desafio não era apenas mostrar produtos, mas capturar a verdadeira "sede de torcer" e o orgulho do único país pentacampeão do mundo. Transformamos a nostalgia das camisas históricas e a energia da nossa torcida em uma narrativa visual dinâmica, comercial e de alto impacto sensorial provando que uma marca forte não vende apenas o produto final, ela entrega a sensação de fazer parte da história. Seu audiovisual hoje está gerando esse nível de desejo e conexão emocional nas suas campanhas? Vamos crescer mais, envie uma mensagem clicando no botão de mensagem ao lado para conversarmos sobre seu projeto!',
     'project.nota.embreve':     'IMAGENS EM BREVE',
+    'project.fr.caption.post':  'Imagens em carrossel para post em rede social.',
+    'project.fr.caption.hibrido': 'Este render híbrido expõe a engenharia invisível do nosso estúdio.<br>Do wireframe bruto à texturização orgânica, realista e minuciosa.<br>Um ballet da luz simulado matematicamente para gerar percepção de luxo.<br>Cada detalhe foi ajustado para garantir o máximo de detalhe.',
+    'img.compare.aria':         'Arraste para comparar as imagens',
     'login.password.label':     'Senha',
     'login.submit':             'ENTRAR',
     'login.forgot':             'Esqueceu a senha?',
@@ -56,6 +59,9 @@ const _t = {
     'project.guaranarenner.desc': 'Original video project for the Guaraná Antarctica + Lojas Renner collab.',
     'project.guaranarenner.full': 'Design connecting Brazilians to their greatest passion. In developing this original* video project for the Guaraná Antarctica + Lojas Renner collab, the challenge wasn\'t just to show products, but to capture the true "thirst to cheer" and the pride of the only five-time world champion country. We turned the nostalgia of historic jerseys and the energy of our fans into a dynamic, commercial, high-sensory-impact visual narrative, proving that a strong brand doesn\'t just sell the final product: it delivers the feeling of being part of history. Is your brand\'s audiovisual generating this level of desire and emotional connection in your campaigns today? Let\'s grow further, send a message by clicking the message button beside this to talk about your project!',
     'project.nota.embreve':     'IMAGES COMING SOON',
+    'project.fr.caption.post':  'Carousel images for social media posts.',
+    'project.fr.caption.hibrido': "This hybrid render exposes our studio's invisible engineering.<br>From raw wireframe to organic, realistic, meticulous texturing.<br>A dance of light simulated mathematically to generate a perception of luxury.<br>Every detail was refined to ensure maximum fidelity.",
+    'img.compare.aria':         'Drag to compare the images',
     'login.password.label':     'Password',
     'login.submit':             'SIGN IN',
     'login.forgot':             'Forgot your password?',
@@ -91,8 +97,15 @@ window.i18n = {
     r.querySelectorAll('[data-i18n]').forEach(el => {
       el.textContent = this.t(el.dataset.i18n);
     });
+    // Igual a data-i18n, mas permite HTML (ex: <br> em legendas com várias linhas)
+    r.querySelectorAll('[data-i18n-html]').forEach(el => {
+      el.innerHTML = this.t(el.dataset.i18nHtml);
+    });
     r.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
       el.placeholder = this.t(el.dataset.i18nPlaceholder);
+    });
+    r.querySelectorAll('[data-i18n-aria]').forEach(el => {
+      el.setAttribute('aria-label', this.t(el.dataset.i18nAria));
     });
     document.querySelectorAll('[data-i18n-desc]').forEach(card => {
       card.dataset.desc = this.t(card.dataset.i18nDesc);

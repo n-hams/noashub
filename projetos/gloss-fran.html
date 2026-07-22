@@ -18,6 +18,11 @@
 </head>
 <body class="projeto-page tema-fran" data-projeto="gloss-fran">
 
+    <!-- Degradê de blur atrás do cabeçalho: some com o que passa por baixo da logo ao rolar -->
+    <div class="header-blur" aria-hidden="true">
+        <div></div><div></div><div></div><div></div>
+    </div>
+
     <a href="../index.html" class="logo-link">
         <svg class="logo-noap" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1108.69 263.61" aria-label="Noa's hub">
           <defs>
@@ -99,7 +104,16 @@
             </div>
 
             <div class="projeto-imagens">
-                <img src="../images/Projeto_Fran_01.png" alt="Gloss Labial Fran" class="projeto-img">
+                <div class="img-compare" data-img-compare>
+                    <img src="../images/Projeto_Fran_01_montagem.png" alt="Gloss Labial Fran - montagem" class="img-compare-base" draggable="false">
+                    <div class="img-compare-overlay">
+                        <img src="../images/Projeto_Fran_01.png" alt="Gloss Labial Fran" draggable="false">
+                    </div>
+                    <div class="img-compare-slider" tabindex="0" role="slider" data-i18n-aria="img.compare.aria" aria-label="Arraste para comparar as imagens" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+                        <div class="img-compare-line"></div>
+                        <div class="img-compare-handle"><span>&#10094;</span><span>&#10095;</span></div>
+                    </div>
+                </div>
                 <img src="../images/Projeto_Fran_02.jpg" alt="Gloss Labial Fran" class="projeto-img">
             </div>
 
@@ -108,6 +122,41 @@
                 <img src="../images/Projeto_Fran_celular_02.png" alt="Gloss Labial Fran - celular 02" class="projeto-img">
                 <img src="../images/Projeto_Fran_celular_03.png" alt="Gloss Labial Fran - celular 03" class="projeto-img">
             </div>
+
+            <div class="projeto-imagens lado-a-lado">
+                <img src="../images/Projeto_Fran_post1.png" alt="Gloss Labial Fran - post 1" class="projeto-img">
+                <img src="../images/Projeto_Fran_post2.png" alt="Gloss Labial Fran - post 2" class="projeto-img">
+                <img src="../images/Projeto_Fran_post3.png" alt="Gloss Labial Fran - post 3" class="projeto-img">
+            </div>
+            <p class="projeto-nota" data-i18n="project.fr.caption.post">Imagens em carrossel para post em rede social.</p>
+
+            <div class="projeto-imagens par-vertical">
+                <div class="img-compare vertical" data-img-compare>
+                    <img src="../images/Projeto_Fran_04_montagem.png" alt="Gloss Labial Fran - montagem 04" class="img-compare-base" draggable="false">
+                    <div class="img-compare-overlay">
+                        <img src="../images/Projeto_Fran_04.png" alt="Gloss Labial Fran 04" draggable="false">
+                    </div>
+                    <div class="img-compare-slider" tabindex="0" role="slider" data-i18n-aria="img.compare.aria" aria-label="Arraste para comparar as imagens" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+                        <div class="img-compare-line"></div>
+                        <div class="img-compare-handle"><span>&#10094;</span><span>&#10095;</span></div>
+                    </div>
+                </div>
+                <div class="img-compare vertical" data-img-compare>
+                    <img src="../images/Projeto_Fran_05_montagem.png" alt="Gloss Labial Fran - montagem 05" class="img-compare-base" draggable="false">
+                    <div class="img-compare-overlay">
+                        <img src="../images/Projeto_Fran_05.png" alt="Gloss Labial Fran 05" draggable="false">
+                    </div>
+                    <div class="img-compare-slider" tabindex="0" role="slider" data-i18n-aria="img.compare.aria" aria-label="Arraste para comparar as imagens" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+                        <div class="img-compare-line"></div>
+                        <div class="img-compare-handle"><span>&#10094;</span><span>&#10095;</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="projeto-imagens">
+                <img src="../images/Projeto_Fran_03.png" alt="Gloss Labial Fran 03" class="projeto-img">
+            </div>
+            <p class="projeto-nota projeto-nota-longa" data-i18n-html="project.fr.caption.hibrido">Este render híbrido expõe a engenharia invisível do nosso estúdio.<br>Do wireframe bruto à texturização orgânica, realista e minuciosa.<br>Um ballet da luz simulado matematicamente para gerar percepção de luxo.<br>Cada detalhe foi ajustado para garantir o máximo de detalhe.</p>
         </div>
     </main>
 
@@ -237,5 +286,6 @@
     <script src="../js/projeto-sidebar.js"></script>
     <script src="../js/projeto-footer.js"></script>
     <script src="../js/projeto-lightbox.js"></script>
+    <script src="../js/img-compare.js"></script>
 </body>
 </html>

@@ -1,11 +1,6 @@
 /* --- PÁGINA DE PROJETOS --- */
 .projeto-page { background: #000; min-height: 100vh; }
 
-/* Nas páginas de projeto o cabeçalho é só a logo (sem barra de botões) e o
-   título/descrição já começam bem mais abaixo — uma faixa de blur alta como
-   na home cobriria texto sendo lido. Encolhe pra ficar só rente à logo. */
-.projeto-page .header-blur { height: 64px; }
-
 .projeto-voltar {
     position: fixed; top: 46px; right: 40px; z-index: 1000;
     color: rgba(255,255,255,0.6); text-decoration: none;

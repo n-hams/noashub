@@ -141,7 +141,7 @@
 }
 
 /* Legenda com várias linhas (usa <br>) */
-.projeto-nota-longa { line-height: 1.7; max-width: 640px; margin-left: auto; margin-right: auto; }
+.projeto-nota-longa { line-height: 1.7; max-width: 640px; margin-left: auto; margin-right: auto; text-wrap: pretty; }
 
 /* --- COMPARADOR DE IMAGENS (antes/depois, arrastável) --- */
 .img-compare {

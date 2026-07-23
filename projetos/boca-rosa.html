@@ -16,7 +16,9 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/projeto.css">
 </head>
-<body class="projeto-page" data-projeto="boca-rosa">
+<body class="projeto-page tema-bocarosa" data-projeto="boca-rosa">
+
+    <div class="bg-vila-blur" aria-hidden="true"></div>
 
     <a href="../index.html" class="logo-link">
         <svg class="logo-noap" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1108.69 263.61" aria-label="Noa's hub">
@@ -98,7 +100,61 @@
                     frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
             </div>
 
-            <p class="projeto-nota" data-i18n="project.nota.embreve">IMAGENS EM BREVE</p>
+            <div class="projeto-imagens">
+                <div class="img-compare" data-img-compare>
+                    <img src="../images/Bocarosa_Foto_vila_solidview.png" alt="Boca Rosa - vila em visualização 3D" class="img-compare-base" draggable="false">
+                    <div class="img-compare-overlay">
+                        <img src="../images/Bocarosa_Foto_vila_renderizado.png" alt="Boca Rosa - vila renderizada" draggable="false">
+                    </div>
+                    <div class="img-compare-slider" tabindex="0" role="slider" data-i18n-aria="img.compare.aria" aria-label="Arraste para comparar as imagens" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+                        <div class="img-compare-line"></div>
+                        <div class="img-compare-handle"><span>&#10094;</span><span>&#10095;</span></div>
+                    </div>
+                </div>
+            </div>
+            <p class="projeto-nota" data-i18n="project.bocarosa.caption.vila">Da modelagem 3D ao render final da vila.</p>
+
+            <div class="projeto-imagens">
+                <img src="../images/Banner.jpg" alt="Boca Rosa - banner" class="projeto-img">
+            </div>
+
+            <div class="projeto-imagens">
+                <img src="../images/Bocarosa_Foto_cenario_banner.png" alt="Boca Rosa - textura do cenário" class="projeto-img">
+            </div>
+
+            <div class="projeto-imagens">
+                <img src="../images/Bocarosa_Foto_banner.png" alt="Boca Rosa - cenário do banner" class="projeto-img">
+            </div>
+
+            <div class="projeto-imagens largo">
+                <img src="../images/Bocarosa_Foto_cenario_casa_1.jpg" alt="Boca Rosa - fachada 1" class="projeto-img">
+                <img src="../images/Bocarosa_Foto_cenario_casa_2.jpg" alt="Boca Rosa - fachada 2" class="projeto-img">
+                <img src="../images/Bocarosa_Foto_cenario_casa_3.jpg" alt="Boca Rosa - fachada 3" class="projeto-img">
+                <img src="../images/Bocarosa_Foto_cenario_casa_parede.jpg" alt="Boca Rosa - parede do cenário" class="projeto-img">
+            </div>
+            <p class="projeto-nota" data-i18n="project.bocarosa.caption.cenarios">Cenários e fachadas recriados para a campanha.</p>
+
+            <div class="projeto-imagens largo">
+                <img src="../images/Bocarosa_Foto_giphy_1.gif" alt="Boca Rosa - still animado 1" class="projeto-img">
+                <img src="../images/Bocarosa_Foto_giphy_2.gif" alt="Boca Rosa - still animado 2" class="projeto-img">
+                <img src="../images/Bocarosa_Foto_giphy_3.gif" alt="Boca Rosa - still animado 3" class="projeto-img">
+                <img src="../images/Bocarosa_Foto_giphy_4.gif" alt="Boca Rosa - still animado 4" class="projeto-img">
+                <img src="../images/Bocarosa_Foto_giphy_5.gif" alt="Boca Rosa - still animado 5" class="projeto-img">
+            </div>
+            <p class="projeto-nota" data-i18n="project.bocarosa.caption.gifs">Still animado das cenas finais.</p>
+
+            <div class="projeto-imagens lado-a-lado">
+                <img src="../images/Bocarosa_Foto_giphy_solidview1.gif" alt="Boca Rosa - visualização 3D 1" class="projeto-img">
+                <img src="../images/Bocarosa_Foto_giphy_solidview2.gif" alt="Boca Rosa - visualização 3D 2" class="projeto-img">
+            </div>
+            <p class="projeto-nota" data-i18n="project.bocarosa.caption.processo">Bastidores: visualização em solid view do cenário.</p>
+
+            <div class="projeto-imagens lado-a-lado">
+                <img src="../images/Bocarosa_Foto_produto_1.png" alt="Boca Rosa - produto 1" class="projeto-img">
+                <img src="../images/Bocarosa_Foto_produto_2.png" alt="Boca Rosa - produto 2" class="projeto-img">
+                <img src="../images/Bocarosa_Foto_produto_3.png" alt="Boca Rosa - produto 3" class="projeto-img">
+            </div>
+            <p class="projeto-nota" data-i18n="project.bocarosa.caption.produtos">Renders de produto em still.</p>
         </div>
     </main>
 
@@ -228,5 +284,6 @@
     <script src="../js/projeto-sidebar.js"></script>
     <script src="../js/projeto-footer.js"></script>
     <script src="../js/projeto-lightbox.js"></script>
+    <script src="../js/img-compare.js"></script>
 </body>
 </html>

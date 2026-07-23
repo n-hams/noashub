@@ -138,6 +138,31 @@
     .projeto-imagens.par-vertical .img-compare { max-width: none; }
 }
 
+/* Fileira "larga": foge do limite de 1100px do conteúdo e ocupa quase a
+   tela toda (~100px de margem de cada lado), com todas as imagens na
+   mesma altura, mantendo a proporção original de cada uma (sem cortar). */
+@media (min-width: 781px) {
+    .projeto-imagens.largo {
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        width: calc(100vw - 200px);
+        max-width: none;
+        margin-left: calc(575px - 50vw);
+        overflow-x: auto;
+    }
+    .projeto-imagens.largo .projeto-img {
+        flex: 0 1 auto;
+        width: auto;
+        height: 220px;
+        max-width: none;
+    }
+}
+@media (max-width: 780px) {
+    .projeto-imagens.largo .projeto-img { flex: 1 1 220px; max-width: 280px; }
+}
+
 /* Legenda com várias linhas (usa <br>) */
 .projeto-nota-longa { line-height: 1.7; max-width: 640px; margin-left: auto; margin-right: auto; text-wrap: pretty; }
 
@@ -279,6 +304,18 @@ body.tema-guarana-renner .projeto-desc::before {
 body.tema-guarana-renner .projeto-nota { color: rgba(26,26,26,0.65); }
 body.tema-guarana-renner .projeto-voltar { color: rgba(26,26,26,0.6); }
 body.tema-guarana-renner .projeto-voltar:hover { color: #1a1a1a; }
+
+/* --- TEMA BOCA ROSA (fundo com foto da vila, desfocado) --- */
+.bg-vila-blur {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url("../images/Bocarosa_Foto_vila_renderizado.png");
+    background-size: cover;
+    background-position: center;
+    filter: blur(24px);
+    transform: scale(1.1); /* esconde a borda desfocada nas bordas da tela */
+}
 
 @media (max-width: 780px) {
     .projeto-sidebar {

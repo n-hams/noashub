@@ -11,7 +11,7 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
 .header-blur {
     position: fixed;
     top: 0; left: 0; width: 100%;
-    height: 100px;
+    height: 150px;
     z-index: 400;
     pointer-events: none;
 }
@@ -41,7 +41,7 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
     -webkit-mask-image: linear-gradient(to top, transparent 65%, white 85%, white 100%);
 }
 @media (max-width: 900px) {
-    .header-blur { height: 120px; }
+    .header-blur { height: 180px; }
 }
 
 .logo-link { position: fixed; top: 40px; left: max(40px, calc(50% - 480px)); z-index: 10000; text-decoration: none; cursor: pointer; }
@@ -559,53 +559,26 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
     .about-rodape { padding-bottom: 2px; font-size: 0.6rem; }
 }
 
-/* --- CARROSSEL DE PROJETOS --- */
-.projetos-carrossel {
+/* --- GRID DE PROJETOS (topo da home) --- */
+.home-projetos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
     background: #000;
-    overflow: hidden;
-    padding: 40px 0;
-    position: relative;
+    gap: 2px;
+    margin-bottom: 70px;
 }
-.projetos-track {
-    display: flex;
-    width: max-content;
-    gap: 12px;
-    will-change: transform;
+.home-projetos-grid .projeto-card {
+    width: 100%;
+    border-radius: 0;
 }
-.projetos-track.com-transicao { transition: transform 0.4s ease; }
-
-/* SETAS DE NAVEGAÇÃO DO CARROSSEL */
-.projetos-carrossel .carrossel-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(15, 25, 25, 0.6);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.3);
-    color: rgba(255,255,255,0.85);
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 20;
-    transition: background 0.3s, border-color 0.3s;
-}
-.projetos-carrossel .carrossel-nav:hover { background: rgba(15, 25, 25, 0.85); border-color: rgba(255,255,255,0.5); }
-.carrossel-prev { left: 16px; }
-.carrossel-next { right: 16px; }
 @media (max-width: 900px) {
-    .projetos-carrossel .carrossel-nav { width: 34px; height: 34px; font-size: 0.85rem; }
-    .carrossel-prev { left: 8px; }
-    .carrossel-next { right: 8px; }
+    .home-projetos-grid { grid-template-columns: 1fr; margin-bottom: 40px; }
 }
+
 .projeto-card {
     width: 300px;
     aspect-ratio: 1 / 1;
-    flex: 0 0 auto;
     position: relative;
     overflow: hidden;
     cursor: pointer;
@@ -623,15 +596,17 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
 .projeto-hover {
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.5);
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 45%, rgba(0,0,0,0) 70%);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 20px;
     opacity: 0;
     transition: opacity 0.3s;
 }
 .projeto-card:hover .projeto-hover { opacity: 1; }
-.projeto-hover span {
+.projeto-hover-ver {
     color: white;
     font-size: 0.7rem;
     font-weight: bold;
@@ -639,6 +614,41 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
     border: 1px solid rgba(255,255,255,0.5);
     padding: 8px 18px;
     border-radius: 50px;
+}
+.projeto-hover-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    text-align: center;
+}
+.projeto-hover-titulo {
+    color: white;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    line-height: 1.25;
+}
+.projeto-hover-tagline {
+    color: rgba(255,255,255,0.75);
+    font-size: 0.7rem;
+    font-weight: 400;
+    line-height: 1.4;
+}
+@media (max-width: 900px) {
+    .projeto-hover-titulo { font-size: 0.9rem; }
+    .projeto-hover-tagline { font-size: 0.65rem; }
+}
+
+/* SETA DOS CARDS DE PROJETO */
+.seta-giphy {
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    width: 28px;
+    height: auto;
+    z-index: 5;
+    pointer-events: none;
 }
 
 /* --- GRID DE TODOS OS PROJETOS (projetos.html) --- */
@@ -755,18 +765,6 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
     border-radius: 12px;
 }
 
-/* SETA DOS CARDS DE PROJETO */
-.seta-giphy {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    width: 28px;
-    height: auto;
-    z-index: 5;
-    pointer-events: none;
-    transition: opacity 0.3s;
-}
-.projeto-card:hover .seta-giphy { opacity: 0; }
 
 /* --- RESPONSIVIDADE PROJETOS --- */
 @media (max-width: 900px) {

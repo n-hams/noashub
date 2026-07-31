@@ -1,10 +1,10 @@
 const PROJETOS = [
-    { slug: 'boca-rosa',  titulo: 'Boca Rosa',          thumb: '../animations/gp_01_bocarosa.gif' },
-    { slug: 'cacau-show', titulo: 'Cacau Show Bytes',   thumb: '../animations/gp_02_cacaushow.gif' },
-    { slug: 'gloss-fran', titulo: 'Gloss Labial Fran',  thumb: '../animations/gp_03_fr.gif' },
-    { slug: 'guarana',    titulo: 'Guaraná',            thumb: '../animations/gp_04_guarana.gif' },
-    { slug: 'super-leve', titulo: 'Super Leve',         thumb: '../animations/gp_05_mansao.gif' },
-    { slug: 'guarana-renner', titulo: 'Lojas Renner e Guaraná Antarctica', thumb: '../images/Projeto_Guaranaerenner_01.png' }
+    { slug: 'boca-rosa',  titulo: 'Boca Rosa',          thumb: '../animations/mp4_01_bocarosa.mp4' },
+    { slug: 'cacau-show', titulo: 'Cacau Show Bytes',   thumb: '../animations/mp4_02_cacaushow.mp4' },
+    { slug: 'gloss-fran', titulo: 'Gloss Labial Fran',  thumb: '../animations/mp4_03_fr.mp4' },
+    { slug: 'guarana',    titulo: 'Guaraná',            thumb: '../animations/mp4_04_guarana.mp4' },
+    { slug: 'super-leve', titulo: 'Super Leve',         thumb: '../animations/mp4_05_mansao.mp4' },
+    { slug: 'guarana-renner', titulo: 'Lojas Renner e Guaraná Antarctica', thumb: '../animations/mp4_04_guaranaerenner.mp4' }
 ];
 
 const ativo = document.body.dataset.projeto;
@@ -15,7 +15,7 @@ PROJETOS.forEach(p => {
     item.href = p.slug + '.html';
     item.className = 'projeto-thumb-wrap' + (p.slug === ativo ? ' ativo' : '');
     item.innerHTML = `
-        <img src="${p.thumb}" alt="${p.titulo}" class="projeto-thumb">
+        <video src="${p.thumb}" class="projeto-thumb" autoplay loop muted playsinline></video>
         <span class="projeto-thumb-label">${p.titulo}</span>
     `;
     sidebar.appendChild(item);

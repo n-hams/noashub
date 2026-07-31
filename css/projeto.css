@@ -305,17 +305,24 @@ body.tema-guarana-renner .projeto-nota { color: rgba(26,26,26,0.65); }
 body.tema-guarana-renner .projeto-voltar { color: rgba(26,26,26,0.6); }
 body.tema-guarana-renner .projeto-voltar:hover { color: #1a1a1a; }
 
-/* --- TEMA BOCA ROSA (fundo com foto da vila, desfocado) --- */
-.bg-vila-blur {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url("../images/Bocarosa_Foto_vila_renderizado.png");
-    background-size: cover;
-    background-position: center;
-    filter: blur(24px);
-    transform: scale(1.1); /* esconde a borda desfocada nas bordas da tela */
+/* --- TEMA BOCA ROSA (fundo preto, hero em tela cheia no topo) --- */
+.projeto-hero-full {
+    width: 100%;
+    line-height: 0;
 }
+.projeto-hero-full-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+@media (max-width: 780px) {
+    .projeto-hero-full-img {
+        height: 50vh;
+        height: 50dvh;
+        object-fit: cover;
+    }
+}
+body.tema-bocarosa .projeto-main { padding-top: 60px; align-items: flex-start; }
 
 @media (max-width: 780px) {
     .projeto-sidebar {

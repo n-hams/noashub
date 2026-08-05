@@ -383,69 +383,19 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
     justify-content: center; /* Centraliza horizontalmente */
     align-items: center;     /* Centraliza verticalmente */
     overflow: hidden;
+    cursor: pointer;
 }
 
-/* CAMADA 1: O FUNDO PNG */
+/* CAMADA 1: O FUNDO PNG — mantém a proporção original da imagem, sem cortar */
 .fundo-camada {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: right center;
-    z-index: 1;
-}
-
-/* CAMADA 2: O CONTEÚDO QUE "FLUTUA" (LOGO/TEXTOS) */
-.conteudo-superior {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 20px;
-}
-
-/* A LOGO QUE ENCOLHE NO CELULAR */
-.logo-banner {
-    width: 60%;         /* No PC ela ocupa 60% da largura */
-    max-width: 800px;   /* Não deixa ficar gigante em monitores 4K */
-    height: auto;       /* Mantém a proporção */
-    transition: width 0.4s ease;
-}
-
-/* RESPONSIVIDADE PARA TELAS PEQUENAS (CELULAR/VS CODE) */
-@media (max-width: 768px) {
-    .logo-banner { width: 85%; }
-    .conteudo-superior { padding-top: 60px; }
-}
-
-/* BANNER 06 — camiseta direita + logo centro-baixo */
-.b06-camiseta {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 100%;
-    width: auto;
-    max-width: none;
-    z-index: 2;
-}
-.b06-logo {
-    position: absolute;
-    bottom: calc(5% + 60px);
-    left: 50%;
-    transform: translateX(-50%);
-    width: clamp(150px, 12.94vw, 230px);
-    height: auto !important;
-    display: block;
     object-fit: contain;
-    z-index: 3;
-}
-@media (max-width: 900px) {
-    .b06-camiseta { right: 50%; transform: translate(50%, -50%); }
+    object-position: center center;
+    z-index: 1;
 }
 
 /* --- JANELAS FLUTUANTES (Login / Contact) --- */
@@ -517,19 +467,6 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
 
 /* Banner 01 — margem direita responsiva */
 .banner { object-position: right center; }
-
-/* Banner 04 — logo igual ao 06 */
-.b04-logo {
-    position: absolute;
-    bottom: calc(5% + 60px);
-    left: 50%;
-    transform: translateX(-50%);
-    width: clamp(150px, 12.94vw, 230px);
-    height: auto !important;
-    display: block;
-    object-fit: contain;
-    z-index: 3;
-}
 
 /* --- ABOUT US --- */
 .about-page { color: white; font-family: sans-serif; padding: 20px 0; display: flex; flex-direction: column; gap: 50px; }

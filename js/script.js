@@ -106,4 +106,13 @@ document.getElementById('banner-next').addEventListener('click', () => {
     irPara((bannerAtual + 1) % banners.length);
 });
 
+// Clique no banner leva direto para a página do projeto correspondente
+banners.forEach(banner => {
+    const slug = banner.dataset.slug;
+    if (!slug) return;
+    banner.addEventListener('click', () => {
+        window.location.href = `projetos/${slug}.html`;
+    });
+});
+
 images[0].onload = () => render(0);

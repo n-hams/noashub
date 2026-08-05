@@ -9,8 +9,9 @@ const PROJETOS = [
 
 const ativo = document.body.dataset.projeto;
 const sidebar = document.getElementById('projeto-sidebar');
+const outrosMobileLista = document.getElementById('projeto-outros-mobile-lista');
 
-PROJETOS.forEach(p => {
+function criarThumb(p) {
     const item = document.createElement('a');
     item.href = p.slug + '.html';
     item.className = 'projeto-thumb-wrap' + (p.slug === ativo ? ' ativo' : '');
@@ -18,5 +19,10 @@ PROJETOS.forEach(p => {
         <video src="${p.thumb}" class="projeto-thumb" autoplay loop muted playsinline></video>
         <span class="projeto-thumb-label">${p.titulo}</span>
     `;
-    sidebar.appendChild(item);
+    return item;
+}
+
+PROJETOS.forEach(p => {
+    sidebar.appendChild(criarThumb(p));
+    if (outrosMobileLista) outrosMobileLista.appendChild(criarThumb(p));
 });

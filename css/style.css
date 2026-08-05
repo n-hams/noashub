@@ -42,6 +42,9 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
 }
 @media (max-width: 900px) {
     .header-blur { height: 180px; }
+    /* Só na home (body#inicio) — na página "Todos os projetos" essa faixa
+       escura de desfoque no topo não deve aparecer no celular. */
+    body:not(#inicio) .header-blur { display: none; }
 }
 
 .logo-link { position: fixed; top: 40px; left: max(40px, calc(50% - 480px)); z-index: 10000; text-decoration: none; cursor: pointer; }

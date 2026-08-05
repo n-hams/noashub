@@ -459,15 +459,24 @@ body.tema-bocarosa .projeto-nota {
 }
 body.tema-bocarosa .projeto-main { padding-top: 60px; align-items: flex-start; }
 
+/* "Outros projetos" — no celular, a navegação para os outros projetos
+   sai do topo fixo e vai para o final da página, com um título acima. */
+.projeto-outros-mobile { display: none; }
+
 @media (max-width: 780px) {
-    .projeto-sidebar {
-        left: 0; top: 0; transform: none; width: 100%; height: auto;
-        flex-direction: row; justify-content: flex-start; overflow-x: auto;
-        border-radius: 0; padding: 90px 20px 14px; gap: 12px;
-    }
+    .projeto-sidebar { display: none; }
     .projeto-thumb-label { left: 50%; top: 120%; transform: translate(-50%, 4px); }
     .projeto-thumb-wrap:hover .projeto-thumb-label { transform: translate(-50%, 0); }
-    .projeto-main { margin-left: 0; padding: 150px 24px 60px; }
+    .projeto-main { margin-left: 0; padding: 100px 24px 60px; }
     .projeto-voltar { top: 54px; right: 20px; }
     .projeto-lang-toggle { top: 16px; right: 16px; padding: 4px 10px; }
+
+    .projeto-outros-mobile { display: block; padding: 10px 24px 50px; }
+    .projeto-outros-titulo { margin-bottom: 16px; }
+    .projeto-outros-lista {
+        display: flex;
+        gap: 14px;
+        overflow-x: auto;
+        padding-bottom: 4px;
+    }
 }

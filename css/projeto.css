@@ -154,12 +154,15 @@
 .projeto-passo .projeto-img { margin-bottom: 16px; }
 .projeto-passo .projeto-mini-titulo { margin-bottom: 8px; }
 
-/* Vídeo: sempre primeiro, centralizado */
+/* Vídeo: iframe do Vimeo ou arquivo local de vídeo */
 .projeto-video-wrap {
     position: relative; width: 100%; max-width: 1000px; margin: 0 auto 32px;
     padding-top: 56.25%; border-radius: 16px; overflow: hidden; background: #000;
 }
-.projeto-video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.projeto-video-wrap iframe,
+.projeto-video-wrap video {
+    position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: contain;
+}
 
 /* Imagens: únicas centralizadas, em sequência ficam lado a lado */
 .projeto-imagens { display: flex; justify-content: center; align-items: flex-start; gap: 24px; flex-wrap: wrap; margin-bottom: 24px; }
@@ -398,47 +401,36 @@ body.lightbox-aberto { overflow: hidden; }
     .lightbox-close { top: 14px; right: 16px; font-size: 1.8rem; }
 }
 
-/* --- TEMA FRAN (fundo rosa com padrão) --- */
-body.tema-fran {
-    background-color: #F0AFC0;
-    background-image: url("../images/Projeto_Fran_Pattern01-11.png");
-    background-repeat: repeat;
-    background-size: 104px 107px;
-}
-body.tema-fran .projeto-titulo { color: #3a1420; }
-body.tema-fran .projeto-desc { color: #000; }
-body.tema-fran .projeto-desc::before {
-    background: rgba(0,0,0,0.1);
-    border-color: rgba(0,0,0,0.08);
-}
-body.tema-fran .projeto-nota { color: rgba(58,20,32,0.65); }
-body.tema-fran .projeto-voltar { color: rgba(58,20,32,0.6); }
-body.tema-fran .projeto-voltar:hover { color: #3a1420; }
-
 /* --- TEMA GUARANÁ + RENNER (fundo amarelo) --- */
 body.tema-guarana-renner { background-color: #fad206; }
-body.tema-guarana-renner .projeto-titulo { color: #1a1a1a; }
-body.tema-guarana-renner .projeto-titulo::after { background: #1a1a1a; }
-body.tema-guarana-renner .projeto-desc { color: #000; }
-body.tema-guarana-renner .projeto-desc::before {
-    background: rgba(0,0,0,0.1);
-    border-color: rgba(0,0,0,0.08);
-}
 body.tema-guarana-renner .projeto-nota { color: rgba(26,26,26,0.65); }
 body.tema-guarana-renner .projeto-voltar { color: rgba(26,26,26,0.6); }
 body.tema-guarana-renner .projeto-voltar:hover { color: #1a1a1a; }
+/* Mini título e texto do novo padrão (herdado de Boca Rosa/Fran) precisam
+   de cores escuras aqui — o laranja e o branco não têm contraste sobre o
+   fundo amarelo. */
+body.tema-guarana-renner .projeto-mini-titulo { color: #1a1a1a; }
+body.tema-guarana-renner .projeto-secao-titulo { color: #1a1a1a; }
+body.tema-guarana-renner .projeto-secao-texto { color: rgba(0,0,0,0.8); }
 
-/* --- TEMA BOCA ROSA (fundo preto, hero em tela cheia no topo) --- */
-/* Legendas seguem o mesmo padrão do restante do texto da página: branco,
-   alinhado à esquerda e na mesma largura das imagens (em vez do texto
-   cinza centralizado usado nas outras páginas de projeto). */
-body.tema-bocarosa .projeto-nota {
+/* --- TEMA ESCURO MODERNO (fundo preto, hero em tela cheia no topo) ---
+   Usado por Boca Rosa e Gloss Labial Fran. Legendas seguem o mesmo padrão
+   do restante do texto da página: branco, alinhado à esquerda e na mesma
+   largura das imagens (em vez do texto cinza centralizado usado nas
+   outras páginas de projeto). */
+body.tema-bocarosa .projeto-nota,
+body.tema-fran .projeto-nota {
     text-align: left;
     color: rgba(255,255,255,0.85);
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
 }
+
+/* Quando a página abre com uma imagem em tela cheia (hero) antes do
+   conteúdo, o espaço do topo já foi ocupado pela imagem — reduz o
+   padding-top do conteúdo, que senão fica alto demais. */
+.projeto-hero-full + .projeto-main { padding-top: 60px; align-items: flex-start; }
 
 .projeto-hero-full {
     position: relative;
@@ -457,7 +449,6 @@ body.tema-bocarosa .projeto-nota {
         object-fit: cover;
     }
 }
-body.tema-bocarosa .projeto-main { padding-top: 60px; align-items: flex-start; }
 
 /* "Outros projetos" — no celular, a navegação para os outros projetos
    sai do topo fixo e vai para o final da página, com um título acima. */

@@ -175,6 +175,17 @@
     .projeto-imagens.lado-a-lado .projeto-img { max-width: 100%; }
 }
 
+/* Grade dupla: 2 colunas x N linhas no desktop, 1 coluna (empilhado) no celular */
+.projeto-imagens.grade-dupla {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+.projeto-imagens.grade-dupla .projeto-img { max-width: none; width: 100%; }
+@media (max-width: 780px) {
+    .projeto-imagens.grade-dupla { grid-template-columns: 1fr; }
+}
+
 /* Fileira do processo (Blender / Davinci / PS) — 3 imagens verticais, 40px entre elas */
 .projeto-imagens.linha-processo { flex-wrap: nowrap; align-items: stretch; gap: 40px; }
 .projeto-imagens.linha-processo .projeto-passo { flex: 1 1 0; max-width: 320px; }
@@ -401,25 +412,14 @@ body.lightbox-aberto { overflow: hidden; }
     .lightbox-close { top: 14px; right: 16px; font-size: 1.8rem; }
 }
 
-/* --- TEMA GUARANÁ + RENNER (fundo amarelo) --- */
-body.tema-guarana-renner { background-color: #fad206; }
-body.tema-guarana-renner .projeto-nota { color: rgba(26,26,26,0.65); }
-body.tema-guarana-renner .projeto-voltar { color: rgba(26,26,26,0.6); }
-body.tema-guarana-renner .projeto-voltar:hover { color: #1a1a1a; }
-/* Mini título e texto do novo padrão (herdado de Boca Rosa/Fran) precisam
-   de cores escuras aqui — o laranja e o branco não têm contraste sobre o
-   fundo amarelo. */
-body.tema-guarana-renner .projeto-mini-titulo { color: #1a1a1a; }
-body.tema-guarana-renner .projeto-secao-titulo { color: #1a1a1a; }
-body.tema-guarana-renner .projeto-secao-texto { color: rgba(0,0,0,0.8); }
-
 /* --- TEMA ESCURO MODERNO (fundo preto, hero em tela cheia no topo) ---
-   Usado por Boca Rosa e Gloss Labial Fran. Legendas seguem o mesmo padrão
-   do restante do texto da página: branco, alinhado à esquerda e na mesma
-   largura das imagens (em vez do texto cinza centralizado usado nas
-   outras páginas de projeto). */
+   Usado por Boca Rosa, Gloss Labial Fran e Renner + Guaraná. Legendas
+   seguem o mesmo padrão do restante do texto da página: branco, alinhado
+   à esquerda e na mesma largura das imagens (em vez do texto cinza
+   centralizado usado nas outras páginas de projeto). */
 body.tema-bocarosa .projeto-nota,
-body.tema-fran .projeto-nota {
+body.tema-fran .projeto-nota,
+body.tema-guarana-renner .projeto-nota {
     text-align: left;
     color: rgba(255,255,255,0.85);
     max-width: 1000px;

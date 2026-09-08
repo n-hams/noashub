@@ -412,6 +412,229 @@ body.lightbox-aberto { overflow: hidden; }
     .lightbox-close { top: 14px; right: 16px; font-size: 1.8rem; }
 }
 
+/* --- TEMA HYDRAGEL / CREAMY (fundo branco) --- */
+body.tema-hydragel { background-color: #fff; }
+body.tema-hydragel .projeto-secao-titulo { color: #7fc5c4; }
+body.tema-hydragel .projeto-secao-texto { color: rgba(0,0,0,0.75); }
+body.tema-hydragel .projeto-nota { color: rgba(0,0,0,0.5); }
+body.tema-hydragel .projeto-voltar { color: rgba(0,0,0,0.55); }
+body.tema-hydragel .projeto-voltar:hover { color: #000; }
+/* Sobe a imagem inteira do banner (16:9), cortando só a margem em
+   branco do topo — o rodapé da imagem continua 100% visível, sem
+   cortar nada embaixo. O margin-bottom fecha o espaço que sobraria:
+   como margin percentual é relativo à LARGURA (não à altura), 35% da
+   altura de uma imagem 16:9 equivale a 19,6875% da largura. Só no
+   desktop; no celular a imagem já usa object-fit cover. */
+@media (min-width: 781px) {
+    body.tema-hydragel .projeto-hero-full { overflow: hidden; }
+    body.tema-hydragel .projeto-hero-full-img { transform: translateY(-35%); margin-bottom: -19.6875%; }
+}
+
+/* Bloco de fundo colorido (logo / manifesto) */
+.hydragel-bloco-cor {
+    background: #7fc5c4;
+    border-radius: 16px;
+    max-width: 1000px;
+    margin: 0 auto 32px;
+    padding: 48px 40px;
+    text-align: center;
+}
+.hydragel-bloco-cor img { max-width: 260px; width: 100%; height: auto; margin: 0 auto; display: block; }
+.hydragel-manifesto-texto {
+    color: #fff;
+    font-size: 1rem;
+    line-height: 1.9;
+    text-align: left;
+    max-width: 680px;
+    margin: 0 auto 20px;
+    text-wrap: pretty;
+}
+.hydragel-manifesto-assinatura {
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-align: left;
+    max-width: 680px;
+    margin: 0 auto 32px;
+}
+.hydragel-bloco-cor .hydragel-manifesto-logo { max-width: 150px; margin: 0 auto; }
+
+/* Conceito / "Pele Livre" */
+.hydragel-conceito {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto 32px;
+    padding: 20px 0 0;
+}
+.hydragel-conceito-bg {
+    position: absolute;
+    inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 0;
+    opacity: 0.35;
+    pointer-events: none;
+}
+.hydragel-conceito-bg img { width: 100%; max-width: 900px; height: auto; }
+.hydragel-conceito-conteudo { position: relative; z-index: 1; }
+.hydragel-conceito-legenda {
+    display: block;
+    color: #4fa3a2;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 28px;
+}
+.hydragel-conceito-colunas { display: flex; gap: 24px; flex-wrap: wrap; }
+.hydragel-conceito-coluna {
+    flex: 1 1 280px;
+    background: rgba(127, 197, 196, 0.1);
+    border: 1px solid rgba(127, 197, 196, 0.35);
+    border-radius: 14px;
+    padding: 28px 26px;
+}
+.hydragel-conceito-coluna h3 {
+    color: #4fa3a2;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 0 16px;
+}
+.hydragel-conceito-coluna p { color: rgba(0,0,0,0.72); font-size: 0.92rem; line-height: 1.8; margin: 0; }
+
+/* O Filme */
+.hydragel-filme {
+    display: flex; gap: 40px; align-items: center;
+    max-width: 1000px; margin: 0 auto 32px; flex-wrap: wrap;
+}
+.hydragel-filme-texto { flex: 1 1 320px; }
+.hydragel-filme-texto h2 {
+    color: #4fa3a2;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 800;
+    margin: 0 0 16px;
+}
+.hydragel-filme-texto p { color: rgba(0,0,0,0.72); font-size: 0.95rem; line-height: 1.8; margin: 0 0 14px; }
+.hydragel-filme-img { flex: 1 1 320px; max-width: 440px; border-radius: 16px; width: 100%; display: block; }
+@media (max-width: 780px) { .hydragel-filme { gap: 24px; } }
+
+/* "ROTEIRO" — título grande com efeito duplo (fantasma atrás) */
+.hydragel-roteiro { position: relative; text-align: center; margin: 40px auto; line-height: 0.85; }
+.hydragel-roteiro span {
+    display: block;
+    font-size: clamp(3rem, 12vw, 8rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+.hydragel-roteiro .principal { color: #7fc5c4; position: relative; z-index: 1; }
+.hydragel-roteiro .fantasma {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(127, 197, 196, 0.3);
+    margin-top: -0.28em;
+}
+
+/* Grade de cenas em loop (12 clipes usados como gif) — 6 por linha no
+   desktop (2 linhas), 2 por linha no celular (6 linhas).
+   ORIGINAL (antes do teste de tamanho): max-width:1000px; margin:0 auto;
+   — igual à coluna de conteúdo padrão, com ~460px de margem lateral em
+   telas grandes. Se o teste abaixo (40px de margem) ficar ruim, é só
+   voltar pra essas duas linhas dentro do @media (min-width:781px). */
+.hydragel-cenas-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 12px;
+    row-gap: 32px;
+    max-width: 1000px;
+    margin: 0 auto 32px;
+}
+/* TESTE: mesmo formato (6 por linha), só maior — quebra a coluna de
+   1100px e usa 100px de margem lateral (mesma técnica e mesmos valores
+   do .largo). Só no desktop. */
+@media (min-width: 781px) {
+    .hydragel-cenas-grid {
+        width: calc(100vw - 470px);
+        max-width: none;
+        margin-left: calc(785px - 50vw);
+    }
+}
+.hydragel-cenas-grid video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    background: #000;
+}
+@media (max-width: 780px) {
+    .hydragel-cenas-grid { grid-template-columns: repeat(2, 1fr); column-gap: 10px; row-gap: 24px; }
+}
+
+/* Formulário de contato embutido no fim da página de projeto (mesmo
+   Formspree e mesmas mensagens do contato padrão do site, só que
+   inline na própria página em vez de janela flutuante). Estilo padrão
+   pensado pro fundo escuro (todas as páginas de projeto exceto a
+   Hydragel/Creamy); tema claro sobrescrito logo abaixo. */
+.projeto-contato { max-width: 560px; margin: 0 auto 32px; }
+.projeto-contato-form { display: flex; flex-direction: column; gap: 16px; }
+.projeto-contato-campo { display: flex; flex-direction: column; gap: 6px; }
+.projeto-contato-campo label {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+.projeto-contato-campo input,
+.projeto-contato-campo textarea {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 14px;
+    padding: 12px 18px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.3s;
+}
+.projeto-contato-campo input::placeholder,
+.projeto-contato-campo textarea::placeholder { color: rgba(255,255,255,0.3); }
+.projeto-contato-campo input:focus,
+.projeto-contato-campo textarea:focus { border-color: rgba(255,255,255,0.5); }
+.projeto-contato-campo textarea { resize: none; height: 120px; }
+.projeto-contato-btn {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 50px;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 0.15em;
+    padding: 14px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.projeto-contato-btn:hover { background: rgba(255,255,255,0.2); }
+.projeto-contato-btn:disabled { opacity: 0.6; cursor: default; }
+.projeto-contato-feedback { color: rgba(255,255,255,0.55); font-size: 0.75rem; text-align: center; min-height: 1em; margin: 0; }
+
+/* Tema claro (Hydragel/Creamy) */
+body.tema-hydragel .projeto-contato-campo label { color: rgba(0,0,0,0.55); }
+body.tema-hydragel .projeto-contato-campo input,
+body.tema-hydragel .projeto-contato-campo textarea {
+    background: rgba(127,197,196,0.08);
+    border-color: rgba(127,197,196,0.4);
+    color: #1a1a1a;
+}
+body.tema-hydragel .projeto-contato-campo input::placeholder,
+body.tema-hydragel .projeto-contato-campo textarea::placeholder { color: rgba(0,0,0,0.35); }
+body.tema-hydragel .projeto-contato-campo input:focus,
+body.tema-hydragel .projeto-contato-campo textarea:focus { border-color: #7fc5c4; }
+body.tema-hydragel .projeto-contato-btn { background: #7fc5c4; border: none; }
+body.tema-hydragel .projeto-contato-btn:hover { background: #4fa3a2; }
+body.tema-hydragel .projeto-contato-feedback { color: rgba(0,0,0,0.55); }
+
 /* --- TEMA ESCURO MODERNO (fundo preto, hero em tela cheia no topo) ---
    Usado por Boca Rosa, Gloss Labial Fran e Renner + Guaraná. Legendas
    seguem o mesmo padrão do restante do texto da página: branco, alinhado

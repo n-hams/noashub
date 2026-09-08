@@ -3,7 +3,7 @@ const PROJETOS = [
     { slug: 'cacau-show', titulo: 'Cacau Show Bytes',   thumb: '../animations/mp4_02_cacaushow.mp4' },
     { slug: 'gloss-fran', titulo: 'Gloss Labial Fran',  thumb: '../animations/mp4_03_fr.mp4' },
     { slug: 'guarana',    titulo: 'Postos Angeloni',    thumb: '../animations/mp4_04_truck.mp4' },
-    { slug: 'super-leve', titulo: 'Super Leve',         thumb: '../animations/mp4_05_mansao.mp4' },
+    { slug: 'super-leve', titulo: 'Hydragel Oil Control', thumb: '../animations/mp4_01_creamyhydragel.mp4' },
     { slug: 'guarana-renner', titulo: 'Lojas Renner e Guaraná Antarctica', thumb: '../animations/mp4_04_guaranaerenner.mp4' }
 ];
 

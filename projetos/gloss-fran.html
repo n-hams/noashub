@@ -237,6 +237,24 @@
             <div class="projeto-secao">
                 <p class="projeto-secao-texto" data-i18n="project.fr.caption.hibrido">Este render híbrido expõe a engenharia invisível do nosso estúdio. Do wireframe bruto à texturização orgânica, realista e minuciosa. Um ballet da luz simulado matematicamente para gerar percepção de valor. Cada detalhe foi ajustado para garantir o máximo de detalhe.</p>
             </div>
+
+            <div class="projeto-secao">
+                <span class="projeto-mini-titulo" data-i18n="project.contato.legenda">Fale Conosco</span>
+            </div>
+            <div class="projeto-contato">
+                <form class="projeto-contato-form" id="form-contato-projeto">
+                    <div class="projeto-contato-campo">
+                        <label for="contato-projeto-email" data-i18n="contact.email.label">Seu e-mail</label>
+                        <input type="email" id="contato-projeto-email" name="email" placeholder="seu@email.com" required>
+                    </div>
+                    <div class="projeto-contato-campo">
+                        <label for="contato-projeto-msg" data-i18n="contact.msg.label">Mensagem</label>
+                        <textarea id="contato-projeto-msg" name="mensagem" placeholder="Como posso te ajudar?" data-i18n-placeholder="contact.msg.placeholder" required></textarea>
+                    </div>
+                    <button type="submit" class="projeto-contato-btn" id="contato-projeto-submit" data-i18n="contact.submit">ENVIAR</button>
+                    <p class="projeto-contato-feedback" id="contato-projeto-feedback"></p>
+                </form>
+            </div>
         </div>
     </main>
 
@@ -374,5 +392,6 @@
     <script src="../js/img-compare.js"></script>
     <script src="../js/img-slider.js"></script>
     <script src="../js/scroll-reveal.js"></script>
+    <script src="../js/projeto-contato.js"></script>
 </body>
 </html>

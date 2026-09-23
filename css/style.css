@@ -591,6 +591,20 @@ body { width: 100%; background-color: #000; font-family: sans-serif; overflow-x:
     pointer-events: none;
 }
 
+/* Selo "NOVIDADE" nos cards da home — mesmo laranja da logo, canto inferior esquerdo */
+.projeto-card-novidade {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    z-index: 5;
+    color: #d76234;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    pointer-events: none;
+}
+
 /* --- GRID DE TODOS OS PROJETOS (projetos.html) --- */
 .grid-projetos {
     max-width: 1400px;

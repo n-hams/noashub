@@ -117,6 +117,13 @@
    título maior (quando houver) embaixo, ambos alinhados à esquerda. O texto acompanha
    a mesma largura das imagens/vídeo (1000px), sem caixa de fundo. */
 .projeto-secao { max-width: 1000px; margin: 8px auto 32px; text-align: left; }
+/* Título logo depois de um bloco de imagens: soma um espaço extra (~2 linhas)
+   pra não ficar colado na imagem anterior. Só afeta título-após-imagem, não
+   título-após-texto (que já tem o respiro normal acima). */
+.projeto-imagens + .projeto-secao,
+.projeto-carrossel + .projeto-secao {
+    margin-top: 56px;
+}
 .projeto-mini-titulo {
     display: block;
     color: #d76234;
@@ -164,6 +171,55 @@
     position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: contain;
 }
 
+/* Toggle vídeo com música / vídeo narrado — pílula com fundo branco
+   deslizante, alto-falante à esquerda e microfone à direita. Clique ou
+   Enter/espaço alternam; a troca do vídeo (src do iframe logo abaixo) é
+   feita pelo js/projeto-video-toggle.js usando os data-video-* daqui. */
+.projeto-video-toggle {
+    position: relative;
+    display: flex;
+    width: 106px;
+    height: 39px;
+    margin: 0 auto;
+    padding: 3px;
+    box-sizing: border-box;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.16);
+    cursor: pointer;
+    overflow: hidden;
+    user-select: none;
+}
+.projeto-video-toggle-thumb {
+    position: absolute;
+    top: 3px; left: 3px;
+    width: calc(50% - 3px);
+    height: calc(100% - 6px);
+    border-radius: 999px;
+    background: #fff;
+    transition: transform 0.3s ease;
+}
+.projeto-video-toggle.narrado .projeto-video-toggle-thumb { transform: translateX(100%); }
+.projeto-video-toggle-icone {
+    position: relative;
+    z-index: 1;
+    flex: 1 1 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.projeto-video-toggle-icone svg { width: 17px; height: 17px; transition: fill 0.3s ease; }
+.projeto-video-toggle-icone.som svg { fill: #111; }
+.projeto-video-toggle-icone.mic svg { fill: rgba(255,255,255,0.6); }
+.projeto-video-toggle.narrado .projeto-video-toggle-icone.som svg { fill: rgba(255,255,255,0.6); }
+.projeto-video-toggle.narrado .projeto-video-toggle-icone.mic svg { fill: #111; }
+
+/* Legenda embaixo do toggle, dizendo qual áudio está selecionado no momento */
+.projeto-video-toggle-legenda {
+    display: block;
+    text-align: center;
+    margin: 10px auto 24px;
+}
+
 /* Imagens: únicas centralizadas, em sequência ficam lado a lado */
 .projeto-imagens { display: flex; justify-content: center; align-items: flex-start; gap: 24px; flex-wrap: wrap; margin-bottom: 24px; }
 .projeto-imagens:last-child { margin-bottom: 0; }
@@ -184,6 +240,84 @@
 .projeto-imagens.grade-dupla .projeto-img { max-width: none; width: 100%; }
 @media (max-width: 780px) {
     .projeto-imagens.grade-dupla { grid-template-columns: 1fr; }
+}
+
+/* Grade tripla: 3 colunas x N linhas no desktop, 1 coluna no celular */
+.projeto-imagens.grade-tripla {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    width: 90%;
+    margin: 0 auto;
+}
+.projeto-imagens.grade-tripla .projeto-img { max-width: none; width: 100%; }
+@media (max-width: 780px) {
+    .projeto-imagens.grade-tripla { width: 100%; gap: 8px; }
+}
+
+/* Grade de 6: 6 colunas x N linhas no desktop, ocupando 60% da largura
+   (imagens menores, tipo thumbnail); 1 coluna no celular em largura cheia */
+.projeto-imagens.grade-seis {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 14px;
+    width: 91%;
+    margin: 0 auto;
+}
+.projeto-imagens.grade-seis .projeto-img { max-width: none; width: 100%; }
+@media (max-width: 780px) {
+    .projeto-imagens.grade-seis { grid-template-columns: 1fr; width: 100%; }
+}
+
+/* No celular a grade de 6 vira um carrossel rolando lateralmente (em vez de
+   empilhar as imagens uma embaixo da outra); no desktop fica escondido e a
+   grade normal acima continua valendo. */
+.projeto-carrossel-seis-mobile { display: none; }
+@media (max-width: 780px) {
+    .projeto-imagens.grade-seis { display: none; }
+    .projeto-carrossel-seis-mobile { display: block; }
+}
+
+/* Carrossel contínuo: rola sozinho em loop, pausa ao passar o mouse por
+   cima (a animação simplesmente não avança enquanto :hover estiver
+   ativo — por isso ao fechar o lightbox e tirar o mouse de cima, ela
+   volta a rolar sozinha, sem precisar de JS pra isso). Clicar numa
+   imagem abre no lightbox padrão do site (já é automático via
+   .projeto-img). As imagens aparecem duplicadas no HTML pra criar o
+   efeito de loop sem emenda (translateX de 0 a -50%). */
+.projeto-carrossel {
+    overflow: hidden;
+    max-width: 1000px;
+    margin: 0 auto 32px;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+}
+.projeto-carrossel-trilha {
+    display: flex;
+    gap: 16px;
+    width: max-content;
+    animation: projetoCarrosselRolar 45s linear infinite;
+}
+.projeto-carrossel:hover .projeto-carrossel-trilha { animation-play-state: paused; }
+/* No celular não existe :hover confiável, então o carrossel também pausa
+   sempre que o lightbox estiver aberto (classe que o próprio projeto-lightbox.js
+   já coloca no body ao clicar numa imagem) e volta a rolar ao fechar. */
+body.lightbox-aberto .projeto-carrossel-trilha { animation-play-state: paused; }
+.projeto-carrossel-trilha .projeto-img {
+    flex: 0 0 auto;
+    width: 180px;
+    max-width: none;
+    border-radius: 12px;
+}
+@keyframes projetoCarrosselRolar {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .projeto-carrossel-trilha { animation: none; }
+}
+@media (max-width: 780px) {
+    .projeto-carrossel-trilha .projeto-img { width: 130px; }
 }
 
 /* Fileira do processo (Blender / Davinci / PS) — 3 imagens verticais, 40px entre elas */

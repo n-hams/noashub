@@ -2,8 +2,8 @@ const PROJETOS = [
     { slug: 'boca-rosa',  titulo: 'Boca Rosa',          thumb: '../animations/mp4_01_bocarosa.mp4' },
     { slug: 'cacau-show', titulo: 'Cacau Show Bytes',   thumb: '../animations/mp4_02_cacaushow.mp4' },
     { slug: 'gloss-fran', titulo: 'Gloss Labial Fran',  thumb: '../animations/mp4_03_fr.mp4' },
-    { slug: 'guarana',    titulo: 'Black Friday Honda Civic', thumb: '../animations/mp4_01_HondaBlackCivic2.mp4' },
-    { slug: 'super-leve', titulo: 'Hydragel Oil Control', thumb: '../animations/mp4_01_creamyhydragel.mp4' },
+    { slug: 'superblackfriday', titulo: 'Black Friday Honda Civic', thumb: '../animations/mp4_01_HondaBlackCivic2.mp4' },
+    { slug: 'pelelivre',  titulo: 'Hydragel Oil Control', thumb: '../animations/mp4_01_creamyhydragel.mp4' },
     { slug: 'guarana-renner', titulo: 'Lojas Renner e Guaraná Antarctica', thumb: '../animations/mp4_04_guaranaerenner.mp4' }
 ];
 

@@ -4,8 +4,7 @@ const PROJETOS = [
     { slug: 'gloss-fran', titulo: 'Gloss Labial Fran',  thumb: '../animations/mp4_03_fr.mp4' },
     { slug: 'superblackfriday', titulo: 'Black Friday Honda Civic', thumb: '../animations/mp4_01_HondaBlackCivic2.mp4' },
     { slug: 'pelelivre',  titulo: 'Hydragel Oil Control', thumb: '../animations/mp4_01_creamyhydragel.mp4' },
-    { slug: 'guarana-renner', titulo: 'Lojas Renner e Guaraná Antarctica', thumb: '../animations/mp4_04_guaranaerenner.mp4' },
-    { slug: 'eudora', titulo: 'Eudora Siàge', thumb: '../animations/Projeto_Eudora_gp7.mp4' }
+    { slug: 'guarana-renner', titulo: 'Lojas Renner e Guaraná Antarctica', thumb: '../animations/mp4_04_guaranaerenner.mp4' }
 ];
 
 const ativo = document.body.dataset.projeto;

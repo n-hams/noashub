@@ -230,6 +230,9 @@
 @media (max-width: 780px) {
     .projeto-imagens.lado-a-lado .projeto-img { max-width: 100%; }
 }
+/* Mesmo grupo, mas com vídeos nativos (mp4) em vez de imagens — reaproveita
+   o .projeto-video-wrap (16:9) no mesmo tamanho das imagens lado a lado */
+.projeto-imagens.lado-a-lado .projeto-video-wrap { flex: 1 1 220px; max-width: 280px; width: 100%; margin: 0; }
 
 /* Grade dupla: 2 colunas x N linhas no desktop, 1 coluna (empilhado) no celular */
 .projeto-imagens.grade-dupla {
@@ -386,9 +389,22 @@ body.lightbox-aberto .projeto-carrossel-trilha { animation-play-state: paused; }
         height: 220px;
         max-width: none;
     }
+    /* Variante com imagens maiores (usada quando a linha tem só 3-4 itens
+       e sobra espaço de sobra pra cada um ficar maior) */
+    .projeto-imagens.largo.grande .projeto-img { height: 420px; }
 }
 @media (max-width: 780px) {
     .projeto-imagens.largo .projeto-img { flex: 1 1 220px; max-width: 280px; }
+}
+/* Variante da linha larga com exatamente 2 por linha no celular (em vez do
+   empilhamento livre padrão) */
+@media (max-width: 780px) {
+    .projeto-imagens.largo.duas-no-celular {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+    .projeto-imagens.largo.duas-no-celular .projeto-img { max-width: none; width: 100%; }
 }
 
 /* Legenda com várias linhas (usa <br>) */

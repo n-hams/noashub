@@ -258,17 +258,6 @@
     .projeto-imagens.grade-tripla { width: 100%; gap: 8px; }
 }
 
-/* Grade de 4: 4 imagens lado a lado no desktop, 2x2 no celular */
-.projeto-imagens.grade-quadrupla {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-}
-.projeto-imagens.grade-quadrupla .projeto-img { max-width: none; width: 100%; }
-@media (max-width: 780px) {
-    .projeto-imagens.grade-quadrupla { grid-template-columns: 1fr 1fr; gap: 8px; }
-}
-
 /* Grade de 6: 6 colunas x N linhas no desktop, ocupando 60% da largura
    (imagens menores, tipo thumbnail); 1 coluna no celular em largura cheia */
 .projeto-imagens.grade-seis {
